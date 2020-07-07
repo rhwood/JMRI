@@ -3,18 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <name>JMRI Parent</name>
+    <name>JMRI Applications</name>
     <groupId>org.jmri</groupId>
-    <artifactId>jmri-parent</artifactId>
+    <artifactId>apps</artifactId>
     <version>4.21.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
-
-    <modules>
-       <module>jmri</module>
-       <module>apps</module>
-    </modules>
-
     <properties>
+        <basedir>../</basedir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <release.build_user>${user.name}</release.build_user>
         <release.build_date>${maven.build.timestamp}</release.build_date>
@@ -353,11 +347,11 @@
     </profiles>
 
     <build>
-        <sourceDirectory>${basedir}/java/src</sourceDirectory>
-        <testSourceDirectory>${basedir}/java/test</testSourceDirectory>
+        <sourceDirectory>../java/src/apps</sourceDirectory>
+        <testSourceDirectory>../java/test/apps</testSourceDirectory>
         <resources>
             <resource>
-                <directory>${basedir}/java/src</directory>
+                <directory>../java/src/apps</directory>
                 <filtering>false</filtering>
                 <includes>
                     <include>**</include>
@@ -367,7 +361,7 @@
                 </excludes>
             </resource>
             <resource>
-                <directory>${basedir}/java/maven-template</directory>
+                <directory>../java/maven-template</directory>
                 <filtering>true</filtering>
                 <includes>
                     <include>jmri/Version.properties</include>
@@ -376,7 +370,7 @@
         </resources>
         <testResources>
             <testResource>
-                <directory>${basedir}/java/test</directory>
+                <directory>../java/test/apps</directory>
                 <filtering>false</filtering>
                 <includes>
                     <include>**</include>
@@ -387,7 +381,7 @@
             </testResource>
         </testResources>
         <filters>
-            <filter>${project.base.directory}/release.properties</filter>
+            <filter>../release.properties</filter>
             <filter>${project.build.directory}/generated/build-metadata/build.properties</filter>
         </filters>
 

@@ -3,18 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <name>JMRI Parent</name>
+    <name>JMRI Library</name>
     <groupId>org.jmri</groupId>
-    <artifactId>jmri-parent</artifactId>
+    <artifactId>jmri</artifactId>
     <version>4.21.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
-
-    <modules>
-       <module>jmri</module>
-       <module>apps</module>
-    </modules>
-
     <properties>
+        <basedir>../</basedir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <release.build_user>${user.name}</release.build_user>
         <release.build_date>${maven.build.timestamp}</release.build_date>
@@ -33,10 +27,10 @@
         <openlcb.version>0.7.26</openlcb.version>
         <netbeans.version>RELEASE113</netbeans.version>
         <jacoco.version>0.8.5</jacoco.version>
-        <jacoco.reportDir>${basedir}/target/</jacoco.reportDir>
+        <jacoco.reportDir>../${basedir}/target/</jacoco.reportDir>
         <!-- test environment -->
-        <jmri.path.program>${basedir}</jmri.path.program>
-        <jmri.prefsdir>${basedir}/temp</jmri.prefsdir>
+        <jmri.path.program>../${basedir}</jmri.path.program>
+        <jmri.prefsdir>../${basedir}/temp</jmri.prefsdir>
         <jmri.shutdownmanager>jmri.util.MockShutDownManager</jmri.shutdownmanager>
         <!-- don't load JInput during CI tests -->
         <jinput.useDefaultPlugin>false</jinput.useDefaultPlugin>
@@ -51,7 +45,7 @@
         <surefire.version>2.22.0</surefire.version>
         <failsafe.version>2.22.0</failsafe.version>
         <jqassistant.version>1.6.0</jqassistant.version>
-        <checkstyle.config.location>${basedir}/checkstyle.xml</checkstyle.config.location>
+        <checkstyle.config.location>../${basedir}/checkstyle.xml</checkstyle.config.location>
     </properties>
     <scm>
         <connection>scm:git:https://github.com/JMRI/JMRI.git</connection>
@@ -166,7 +160,7 @@
                                     <failOnViolation>true</failOnViolation>
                                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
                                     <sourceDirectories>
-                                        <sourceDirectory>${basedir}</sourceDirectory>
+                                        <sourceDirectory>../${basedir}</sourceDirectory>
                                     </sourceDirectories>
                                     <includes>**/*</includes>
                                     <excludes>**/*.jpg,**/*.PNG,**/*.jar,**/*.dll,**/*.dylib,**/*.so,**/*.exe,
@@ -196,9 +190,9 @@
                             <source>1.8</source>
                             <target>1.8</target>
                             <compilerArgs>
-                                <properties>${basedir}/java/ecj.warning.options-ci</properties>
+                                <properties>../${basedir}/java/ecj.warning.options-ci</properties>
                                 <arg>-sourcepath</arg>
-                                <arg>${basedir}/java/src:${basedir}/target/generated-sources</arg>
+                                <arg>../${basedir}/java/src:../${basedir}/target/generated-sources</arg>
                             </compilerArgs>
                         </configuration>
                         <dependencies>
@@ -353,11 +347,11 @@
     </profiles>
 
     <build>
-        <sourceDirectory>${basedir}/java/src</sourceDirectory>
-        <testSourceDirectory>${basedir}/java/test</testSourceDirectory>
+        <sourceDirectory>../java/src/jmri</sourceDirectory>
+        <testSourceDirectory>../java/test/jmri</testSourceDirectory>
         <resources>
             <resource>
-                <directory>${basedir}/java/src</directory>
+                <directory>../java/src/jmri</directory>
                 <filtering>false</filtering>
                 <includes>
                     <include>**</include>
@@ -367,7 +361,7 @@
                 </excludes>
             </resource>
             <resource>
-                <directory>${basedir}/java/maven-template</directory>
+                <directory>../java/maven-template</directory>
                 <filtering>true</filtering>
                 <includes>
                     <include>jmri/Version.properties</include>
@@ -376,7 +370,7 @@
         </resources>
         <testResources>
             <testResource>
-                <directory>${basedir}/java/test</directory>
+                <directory>../java/test/jmri</directory>
                 <filtering>false</filtering>
                 <includes>
                     <include>**</include>
@@ -387,7 +381,7 @@
             </testResource>
         </testResources>
         <filters>
-            <filter>${project.base.directory}/release.properties</filter>
+            <filter>../release.properties</filter>
             <filter>${project.build.directory}/generated/build-metadata/build.properties</filter>
         </filters>
 
@@ -409,7 +403,7 @@
                         <phase>test</phase>
                         <configuration>
                             <target>
-                                <ant antfile="${basedir}/build.xml">
+                                <ant antfile="../${basedir}/build.xml">
                                     <target name="ci-test"/>
                                 </ant>
                             </target>
@@ -422,7 +416,7 @@
                 -->
                 <configuration>
                     <target>
-                        <ant antfile="${basedir}/build.xml">
+                        <ant antfile="../${basedir}/build.xml">
                             <target name="${anttarget}"/>
                         </ant>
                     </target>
@@ -461,7 +455,7 @@
                 <artifactId>javacc-maven-plugin</artifactId>
                 <version>2.6</version>
                 <configuration>
-                    <sourceDirectory>${basedir}/java/src</sourceDirectory>
+                    <sourceDirectory>../java/src/jmri</sourceDirectory>
                 </configuration>
                 <executions>
                     <execution>
@@ -504,7 +498,7 @@
                 <version>${surefire.version}</version>
                 <configuration>
                     <additionalClasspathElements>
-                        <additionalClasspathElement>${basedir}</additionalClasspathElement>
+                        <additionalClasspathElement>../${basedir}</additionalClasspathElement>
                     </additionalClasspathElements>
                     <excludes>
                         <!-- ignore until #3492 is resolved -->
@@ -525,15 +519,15 @@
                         <exclude>jmri.util.TestWaitsForever</exclude>
                     </excludes>
                     <systemPropertyVariables>
-                        <jmri.path.program>${basedir}</jmri.path.program>
-                        <jmri.prefsdir>${basedir}/temp</jmri.prefsdir>
+                        <jmri.path.program>../${basedir}</jmri.path.program>
+                        <jmri.prefsdir>../${basedir}/temp</jmri.prefsdir>
                         <jmri.shutdownmanager>jmri.util.MockShutDownManager</jmri.shutdownmanager>
                         <jinput.useDefaultPlugin>false</jinput.useDefaultPlugin><!-- don't load JInput during CI tests -->
                     </systemPropertyVariables>
                     <trimStackTrace>false</trimStackTrace>
-                    <workingDirectory>${basedir}</workingDirectory>
+                    <workingDirectory>../${basedir}</workingDirectory>
                     <!-- -ea or -da in the next line to control Java asserts -->
-                    <argLine>@{argLine} @{surefire.argLine} -Djava.security.policy=${basedir}/lib/security.policy</argLine>
+                    <argLine>@{argLine} @{surefire.argLine} -Djava.security.policy=../${basedir}/lib/security.policy</argLine>
                     <useSystemClassLoader>true</useSystemClassLoader>
                     <useManifestOnlyJar>false</useManifestOnlyJar>
                     <!-- forkCount causes tests to run in forked JVMs.  The following the number with C says to fork the number multiplied by the number of cores available. -->
@@ -553,7 +547,7 @@
                             <goal>verify</goal>
                         </goals>
                         <configuration>
-                            <argLine>@{argLine} @{failsafe.argLine} -Djava.security.policy=${basedir}/lib/security.policy</argLine>
+                            <argLine>@{argLine} @{failsafe.argLine} -Djava.security.policy=../${basedir}/lib/security.policy</argLine>
                         </configuration>
                     </execution>
                 </executions>
@@ -618,7 +612,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>${basedir}/java/acceptancetest/step_definitions</source>
+                                <source>../${basedir}/java/acceptancetest/step_definitions</source>
                             </sources>
                         </configuration>
                     </execution>
@@ -644,8 +638,8 @@
                 <configuration>
                     <!-- differs from ant-produced Javadocs by including JMRI version -->
                     <maxmemory>512m</maxmemory>
-                    <overview>${basedir}/java/src/jmri/overview.html</overview>
-                    <sourcepath>${basedir}/java/src:${project.build.directory}/generated-sources/javacc:${project.build.directory}/generated-sources/jjtree</sourcepath>
+                    <overview>../${basedir}/java/src/jmri/overview.html</overview>
+                    <sourcepath>../${basedir}/java/src:${project.build.directory}/generated-sources/javacc:${project.build.directory}/generated-sources/jjtree</sourcepath>
                     <!-- do not document the generated parser packages -->
                     <excludePackageNames>*.simpleserver.parser:*.srcp.parser</excludePackageNames>
                     <show>package</show>
@@ -938,7 +932,7 @@
                     <failOnViolation>true</failOnViolation>
                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
                     <sourceDirectories>
-                        <sourceDirectory>${basedir}</sourceDirectory>
+                        <sourceDirectory>../${basedir}</sourceDirectory>
                     </sourceDirectories>
                     <includes>**/*</includes>
                     <excludes>**/*.jpg,**/*.PNG,**/*.jar,**/*.dll,**/*.dylib,**/*.so,**/*.exe,
