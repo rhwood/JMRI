@@ -90,13 +90,6 @@
                         <groupId>org.eluder.coveralls</groupId>
                         <artifactId>coveralls-maven-plugin</artifactId>
                         <version>4.3.0</version>
-                        <configuration>
-                            <sourceDirectories>
-                                <!-- Additional source directories -->
-                                <File>target/generated-sources/javacc</File>
-                                <File>target/generated-sources/jjtree</File>
-                            </sourceDirectories>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>
@@ -451,28 +444,6 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>javacc-maven-plugin</artifactId>
-                <version>2.6</version>
-                <configuration>
-                    <sourceDirectory>${basedir}/java/src</sourceDirectory>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>jjtree-javacc</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>net.java.dev.javacc</groupId>
-                        <artifactId>javacc</artifactId>
-                        <version>7.0.3</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
                 <version>3.1.12</version>
@@ -639,9 +610,7 @@
                     <!-- differs from ant-produced Javadocs by including JMRI version -->
                     <maxmemory>512m</maxmemory>
                     <overview>${basedir}/java/src/jmri/overview.html</overview>
-                    <sourcepath>${basedir}/java/src:${project.build.directory}/generated-sources/javacc:${project.build.directory}/generated-sources/jjtree</sourcepath>
-                    <!-- do not document the generated parser packages -->
-                    <excludePackageNames>*.simpleserver.parser:*.srcp.parser</excludePackageNames>
+                    <sourcepath>${basedir}/java/src</sourcepath>
                     <show>package</show>
                     <!-- change from default 100 warnings; keep number synced with ant javadoc target -->
                     <additionalJOption>-breakiterator -Xmaxwarns 100</additionalJOption><!-- 100 is default, here so we can easily change it -->
@@ -983,21 +952,6 @@
                                         <versionRange>[1.4,)</versionRange>
                                         <goals>
                                             <goal>create-metadata</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <execute>
-                                            <runOnIncremental>false</runOnIncremental>
-                                        </execute>
-                                    </action>
-                                </pluginExecution>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>org.codehaus.mojo</groupId>
-                                        <artifactId>javacc-maven-plugin</artifactId>
-                                        <versionRange>[2.6,)</versionRange>
-                                        <goals>
-                                            <goal>jjtree-javacc</goal>
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
