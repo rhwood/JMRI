@@ -6,9 +6,6 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <content url="file://$MODULE_DIR$/../java/maven-template">
-      <sourceFolder url="file://$MODULE_DIR$/../java/maven-template" type="java-resource" />
-    </content>
     <content url="file://$MODULE_DIR$/../java/src/apps">
       <sourceFolder url="file://$MODULE_DIR$/../java/src/apps" isTestSource="false" />
     </content>
@@ -17,6 +14,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="jmri" />
     <orderEntry type="library" name="Maven: org.jdom:jdom2:2.0.6" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-log4j12:1.7.25" level="project" />
