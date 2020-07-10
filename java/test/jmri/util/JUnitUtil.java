@@ -38,8 +38,7 @@ import org.junit.Assert;
 import org.netbeans.jemmy.*;
 import org.netbeans.jemmy.operators.*;
 
-import apps.SystemConsole;
-import apps.util.Log4JUtil;
+//import apps.SystemConsole;
 
 /**
  * Common utility methods for working with JUnit.
@@ -171,9 +170,9 @@ public class JUnitUtil {
             Log4JUtil.initLogging(filename);
         }
 
-        if (SystemConsole.isCreated()) {
-            SystemConsole.getInstance().open();
-        }
+//        if (SystemConsole.isCreated()) {
+//            SystemConsole.getInstance().open();
+//        }
 
         // need to do this each time
         try {
@@ -339,9 +338,9 @@ public class JUnitUtil {
         //new org.netbeans.jemmy.QueueTool().waitEmpty(250);
 
         // remove SystemConsole log appenders so test framework output is not included
-        if (SystemConsole.isCreated()) {
-            SystemConsole.getInstance().close();
-        }
+//        if (SystemConsole.isCreated()) {
+//            SystemConsole.getInstance().close();
+//        }
     }
 
     /**
@@ -1082,16 +1081,16 @@ public class JUnitUtil {
     /*
      * Use reflection to reset the apps.AppsBase instance
      */
-    public static void resetAppsBase() {
-        try {
-            Class<?> c = apps.AppsBase.class;
-            Field f = c.getDeclaredField("preInit");
-            f.setAccessible(true);
-            f.set(null, false);
-        } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException x) {
-            log.error("Failed to reset apps.AppsBase static preInit field", x);
-        }
-    }
+//    public static void resetAppsBase() {
+//        try {
+//            Class<?> c = apps.AppsBase.class;
+//            Field f = c.getDeclaredField("preInit");
+//            f.setAccessible(true);
+//            f.set(null, false);
+//        } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException x) {
+//            log.error("Failed to reset apps.AppsBase static preInit field", x);
+//        }
+//    }
 
     /*
      * Use reflection to reset the jmri.util.node.NodeIdentity instance

@@ -1,7 +1,5 @@
 package jmri.managers;
 
-import apps.AppConfigBase;
-
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
@@ -14,7 +12,7 @@ import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 import jmri.InstanceManager;
 import jmri.UserPreferencesManager;
@@ -711,9 +709,9 @@ public class JmriUserPreferencesManagerTest {
         Assert.assertTrue(m.getClassDescription(strClass).isEmpty());
         m.setPreferenceState(strClass, "test1", true);
         Assert.assertNull(m.getClassDescription(strClass));
-        m.setPreferenceState(AppConfigBase.class.getName(), "test1", true);
+        m.setPreferenceState(JPanel.class.getName(), "test1", true);
         String d = ResourceBundle.getBundle("apps.AppsConfigBundle").getString("Application");
-        Assert.assertEquals(d, m.getClassDescription(AppConfigBase.class.getName()));
+        Assert.assertEquals(d, m.getClassDescription(JPanel.class.getName()));
     }
 
     @Test
@@ -736,9 +734,9 @@ public class JmriUserPreferencesManagerTest {
         m.setClassDescription(strClass);
         Assert.assertNotNull(m.getClassDescription(strClass));
         Assert.assertTrue(m.getClassDescription(strClass).isEmpty());
-        m.setClassDescription(AppConfigBase.class.getName());
+        m.setClassDescription(JPanel.class.getName());
         String d = ResourceBundle.getBundle("apps.AppsConfigBundle").getString("Application");
-        Assert.assertEquals(d, m.getClassDescription(AppConfigBase.class.getName()));
+        Assert.assertEquals(d, m.getClassDescription(JPanel.class.getName()));
     }
 
     @Test
