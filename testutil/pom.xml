@@ -3,8 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <name>JMRI Applications</name>
-    <artifactId>apps</artifactId>
+    <name>JMRI Test Utilities</name>
+    <artifactId>testutil</artifactId>
 
     <parent>
         <groupId>org.jmri</groupId>
@@ -33,15 +33,17 @@
         <openlcb.version>0.7.26</openlcb.version>
         <netbeans.version>RELEASE113</netbeans.version>
         <jacoco.version>0.8.5</jacoco.version>
-        <jacoco.reportDir>${basedir}/target/</jacoco.reportDir>
+        <jacoco.reportDir>../${basedir}/target/</jacoco.reportDir>
         <!-- test environment -->
-        <jmri.path.program>${basedir}</jmri.path.program>
-        <jmri.prefsdir>${basedir}/temp</jmri.prefsdir>
+        <jmri.path.program>../${basedir}</jmri.path.program>
+        <jmri.prefsdir>../${basedir}/temp</jmri.prefsdir>
         <jmri.shutdownmanager>jmri.util.MockShutDownManager</jmri.shutdownmanager>
         <!-- don't load JInput during CI tests -->
         <jinput.useDefaultPlugin>false</jinput.useDefaultPlugin>
+        <ant.version>1.10.7</ant.version>
         <junit5.version>5.6.0</junit5.version>
         <junit.platform.version>1.6.0</junit.platform.version>
+        <ant.jvm.args></ant.jvm.args>
         <argLine>-Xmx1536m -Duser.language=en -Duser.region=US</argLine>
         <!-- define argLines to allow running surefire:test -->
         <surefire.argLine></surefire.argLine>
@@ -49,7 +51,7 @@
         <surefire.version>2.22.0</surefire.version>
         <failsafe.version>2.22.0</failsafe.version>
         <jqassistant.version>1.6.0</jqassistant.version>
-        <checkstyle.config.location>${basedir}/checkstyle.xml</checkstyle.config.location>
+        <checkstyle.config.location>../${basedir}/checkstyle.xml</checkstyle.config.location>
     </properties>
 
     <profiles>
@@ -71,6 +73,13 @@
                         <groupId>org.eluder.coveralls</groupId>
                         <artifactId>coveralls-maven-plugin</artifactId>
                         <version>4.3.0</version>
+                        <configuration>
+                            <sourceDirectories>
+                                <!-- Additional source directories -->
+                                <File>target/generated-sources/javacc</File>
+                                <File>target/generated-sources/jjtree</File>
+                            </sourceDirectories>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
@@ -134,7 +143,7 @@
                                     <failOnViolation>true</failOnViolation>
                                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
                                     <sourceDirectories>
-                                        <sourceDirectory>${basedir}</sourceDirectory>
+                                        <sourceDirectory>../${basedir}</sourceDirectory>
                                     </sourceDirectories>
                                     <includes>**/*</includes>
                                     <excludes>**/*.jpg,**/*.PNG,**/*.jar,**/*.dll,**/*.dylib,**/*.so,**/*.exe,
@@ -164,9 +173,9 @@
                             <source>1.8</source>
                             <target>1.8</target>
                             <compilerArgs>
-                                <properties>${basedir}/java/ecj.warning.options-ci</properties>
+                                <properties>../${basedir}/java/ecj.warning.options-ci</properties>
                                 <arg>-sourcepath</arg>
-                                <arg>${basedir}/java/src:${basedir}/target/generated-sources</arg>
+                                <arg>../${basedir}/java/src:../${basedir}/target/generated-sources</arg>
                             </compilerArgs>
                         </configuration>
                         <dependencies>
@@ -321,11 +330,10 @@
     </profiles>
 
     <build>
-        <sourceDirectory>../java/src/apps</sourceDirectory>
-        <testSourceDirectory>../java/test/apps</testSourceDirectory>
+        <sourceDirectory>../java/test/jmri</sourceDirectory>
         <resources>
             <resource>
-                <directory>../java/src/apps</directory>
+                <directory>../java/src/jmri</directory>
                 <filtering>false</filtering>
                 <includes>
                     <include>**</include>
@@ -344,7 +352,7 @@
         </resources>
         <testResources>
             <testResource>
-                <directory>../java/test/apps</directory>
+                <directory>../java/test/jmri</directory>
                 <filtering>false</filtering>
                 <includes>
                     <include>**</include>
@@ -367,12 +375,84 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version><!--$NO-MVN-MAN-VER$-->
+                <!-- above line-end comment silences warning in Eclipse -->
+                <!--
+                <executions>
+                    <execution>
+                        <id>test</id>
+                        <phase>test</phase>
+                        <configuration>
+                            <target>
+                                <ant antfile="../${basedir}/build.xml">
+                                    <target name="ci-test"/>
+                                </ant>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                -->
+                <configuration>
+                    <target>
+                        <ant antfile="../${basedir}/build.xml">
+                            <target name="${anttarget}"/>
+                        </ant>
+                    </target>
+                </configuration>
+                <dependencies>
+                    <!-- use the version of ant we specify -->
+                    <dependency>
+                        <groupId>org.apache.ant</groupId>
+                        <artifactId>ant</artifactId>
+                        <version>${ant.version}</version>
+                    </dependency>
+                    <!-- junit support is optional in ant maven packaging -->
+                    <dependency>
+                        <groupId>org.apache.ant</groupId>
+                        <artifactId>ant-junit</artifactId>
+                        <version>${ant.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.ant</groupId>
+                        <artifactId>ant-junitlauncher</artifactId>
+                        <version>${ant.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>javacc-maven-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <sourceDirectory>../java/src/jmri</sourceDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jjtree-javacc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>net.java.dev.javacc</groupId>
+                        <artifactId>javacc</artifactId>
+                        <version>7.0.3</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
@@ -400,7 +480,7 @@
                 <version>${surefire.version}</version>
                 <configuration>
                     <additionalClasspathElements>
-                        <additionalClasspathElement>${basedir}</additionalClasspathElement>
+                        <additionalClasspathElement>../${basedir}</additionalClasspathElement>
                     </additionalClasspathElements>
                     <excludes>
                         <!-- ignore until #3492 is resolved -->
@@ -421,15 +501,15 @@
                         <exclude>jmri.util.TestWaitsForever</exclude>
                     </excludes>
                     <systemPropertyVariables>
-                        <jmri.path.program>${basedir}</jmri.path.program>
-                        <jmri.prefsdir>${basedir}/temp</jmri.prefsdir>
+                        <jmri.path.program>../${basedir}</jmri.path.program>
+                        <jmri.prefsdir>../${basedir}/temp</jmri.prefsdir>
                         <jmri.shutdownmanager>jmri.util.MockShutDownManager</jmri.shutdownmanager>
                         <jinput.useDefaultPlugin>false</jinput.useDefaultPlugin><!-- don't load JInput during CI tests -->
                     </systemPropertyVariables>
                     <trimStackTrace>false</trimStackTrace>
-                    <workingDirectory>${basedir}</workingDirectory>
+                    <workingDirectory>../${basedir}</workingDirectory>
                     <!-- -ea or -da in the next line to control Java asserts -->
-                    <argLine>@{argLine} @{surefire.argLine} -Djava.security.policy=${basedir}/lib/security.policy</argLine>
+                    <argLine>@{argLine} @{surefire.argLine} -Djava.security.policy=../${basedir}/lib/security.policy</argLine>
                     <useSystemClassLoader>true</useSystemClassLoader>
                     <useManifestOnlyJar>false</useManifestOnlyJar>
                     <!-- forkCount causes tests to run in forked JVMs.  The following the number with C says to fork the number multiplied by the number of cores available. -->
@@ -449,7 +529,7 @@
                             <goal>verify</goal>
                         </goals>
                         <configuration>
-                            <argLine>@{argLine} @{failsafe.argLine} -Djava.security.policy=${basedir}/lib/security.policy</argLine>
+                            <argLine>@{argLine} @{failsafe.argLine} -Djava.security.policy=../${basedir}/lib/security.policy</argLine>
                         </configuration>
                     </execution>
                 </executions>
@@ -514,7 +594,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>../java/acceptancetest/step_definitions/apps</source>
+                                <source>../${basedir}/java/acceptancetest/step_definitions</source>
                             </sources>
                         </configuration>
                     </execution>
@@ -540,8 +620,10 @@
                 <configuration>
                     <!-- differs from ant-produced Javadocs by including JMRI version -->
                     <maxmemory>512m</maxmemory>
-                    <overview>${basedir}/java/src/jmri/overview.html</overview>
-                    <sourcepath>${basedir}/java/src</sourcepath>
+                    <overview>../${basedir}/java/src/jmri/overview.html</overview>
+                    <sourcepath>../${basedir}/java/src:${project.build.directory}/generated-sources/javacc:${project.build.directory}/generated-sources/jjtree</sourcepath>
+                    <!-- do not document the generated parser packages -->
+                    <excludePackageNames>*.simpleserver.parser:*.srcp.parser</excludePackageNames>
                     <show>package</show>
                     <!-- change from default 100 warnings; keep number synced with ant javadoc target -->
                     <additionalJOption>-breakiterator -Xmaxwarns 100</additionalJOption><!-- 100 is default, here so we can easily change it -->
@@ -832,7 +914,7 @@
                     <failOnViolation>true</failOnViolation>
                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
                     <sourceDirectories>
-                        <sourceDirectory>${basedir}</sourceDirectory>
+                        <sourceDirectory>../${basedir}</sourceDirectory>
                     </sourceDirectories>
                     <includes>**/*</includes>
                     <excludes>**/*.jpg,**/*.PNG,**/*.jar,**/*.dll,**/*.dylib,**/*.so,**/*.exe,
@@ -883,6 +965,21 @@
                                         <versionRange>[1.4,)</versionRange>
                                         <goals>
                                             <goal>create-metadata</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <execute>
+                                            <runOnIncremental>false</runOnIncremental>
+                                        </execute>
+                                    </action>
+                                </pluginExecution>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.codehaus.mojo</groupId>
+                                        <artifactId>javacc-maven-plugin</artifactId>
+                                        <versionRange>[2.6,)</versionRange>
+                                        <goals>
+                                            <goal>jjtree-javacc</goal>
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
@@ -1017,12 +1114,6 @@
             <version>4.21.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>org.jmri</groupId>
-            <artifactId>testutil</artifactId>
-            <version>4.21.1-SNAPSHOT</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.jdom</groupId>
             <artifactId>jdom2</artifactId>
             <version>2.0.6</version>
@@ -1052,97 +1143,81 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>${junit5.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit5.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
             <version>${junit5.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit5.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
             <version>${junit.platform.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-commons</artifactId>
             <version>${junit.platform.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-launcher</artifactId>
             <version>${junit.platform.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.tngtech.archunit</groupId>
             <artifactId>archunit-junit5</artifactId>
             <version>0.14.1</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>3.12.0</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-swing-junit</artifactId>
             <version>3.9.2</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>${cucumber.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java8</artifactId>
             <version>${cucumber.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
             <version>${cucumber.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-picocontainer</artifactId>
             <version>${cucumber.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>3.6.0</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>3.4.0</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>javax.help</groupId>
@@ -1398,32 +1473,27 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>3.3.3</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
             <version>3.3.3</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
             <version>1.10.5</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.netbeans.external</groupId>
             <artifactId>jemmy</artifactId>
             <version>${jemmy.version}</version>
-            <scope>test</scope>
         </dependency>
         <!--
         <dependency>
             <groupId>com.github.stefanbirkner</groupId>
             <artifactId>system-rules</artifactId>
             <version>1.16.0</version>
-            <scope>test</scope>
         </dependency>
         -->
         <dependency>
@@ -1466,13 +1536,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>5.1.14.RELEASE</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>5.1.14.RELEASE</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>net.coobird</groupId>

@@ -11,6 +11,7 @@
 
     <modules>
        <module>jmri</module>
+       <module>testutil</module>
        <module>apps</module>
     </modules>
 
@@ -353,44 +354,6 @@
     </profiles>
 
     <build>
-        <sourceDirectory>${basedir}/java/src</sourceDirectory>
-        <testSourceDirectory>${basedir}/java/test</testSourceDirectory>
-        <resources>
-            <resource>
-                <directory>${basedir}/java/src</directory>
-                <filtering>false</filtering>
-                <includes>
-                    <include>**</include>
-                </includes>
-                <excludes>
-                    <exclude>**/*.java</exclude>
-                </excludes>
-            </resource>
-            <resource>
-                <directory>${basedir}/java/maven-template</directory>
-                <filtering>true</filtering>
-                <includes>
-                    <include>jmri/Version.properties</include>
-                </includes>
-            </resource>
-        </resources>
-        <testResources>
-            <testResource>
-                <directory>${basedir}/java/test</directory>
-                <filtering>false</filtering>
-                <includes>
-                    <include>**</include>
-                </includes>
-                <excludes>
-                    <exclude>**/*.java</exclude>
-                </excludes>
-            </testResource>
-        </testResources>
-        <filters>
-            <filter>${project.base.directory}/release.properties</filter>
-            <filter>${project.build.directory}/generated/build-metadata/build.properties</filter>
-        </filters>
-
         <plugins>
             <plugin>
                 <groupId>org.pitest</groupId>

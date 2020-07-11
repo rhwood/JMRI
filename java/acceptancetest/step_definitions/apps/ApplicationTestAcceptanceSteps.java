@@ -12,6 +12,7 @@ import jmri.util.JmriJFrame;
 import jmri.util.MockShutDownManager;
 import jmri.util.JUnitAppender;
 import jmri.util.JUnitUtil;
+import apps.util.AppsUtil;
 import org.netbeans.jemmy.operators.JButtonOperator;
 import org.netbeans.jemmy.operators.JDialogOperator;
 
@@ -31,7 +32,7 @@ public class ApplicationTestAcceptanceSteps implements En {
             JUnitUtil.setUp();
             JUnitUtil.clearShutDownManager();
             JUnitUtil.resetApplication();
-            JUnitUtil.resetAppsBase();
+            AppsUtil.resetAppsBase();
         });
 
         Given("^I am using profile (.*)$", (String profile) -> {
@@ -92,7 +93,7 @@ public class ApplicationTestAcceptanceSteps implements En {
             FileUtils.deleteDirectory(tempFolder);
             System.clearProperty("org.jmri.profile");
             JUnitUtil.clearShutDownManager();
-            JUnitUtil.resetAppsBase();
+            AppsUtil.resetAppsBase();
             JUnitUtil.resetFileUtilSupport();
             JUnitUtil.resetWindows(false,false);
             JUnitUtil.tearDown();
