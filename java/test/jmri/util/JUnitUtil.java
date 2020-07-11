@@ -38,8 +38,6 @@ import org.junit.Assert;
 import org.netbeans.jemmy.*;
 import org.netbeans.jemmy.operators.*;
 
-//import apps.SystemConsole;
-
 /**
  * Common utility methods for working with JUnit.
  * <p>
@@ -167,12 +165,8 @@ public class JUnitUtil {
             // init logging if needed
             isLoggingInitialized = true;
             String filename = System.getProperty("jmri.log4jconfigfilename", "tests.lcf");
-            Log4JUtil.initLogging(filename);
+            LoggingTestUtil.initLogging(filename);
         }
-
-//        if (SystemConsole.isCreated()) {
-//            SystemConsole.getInstance().open();
-//        }
 
         // need to do this each time
         try {
@@ -337,10 +331,6 @@ public class JUnitUtil {
         // Optionally, check that the Swing queue is idle
         //new org.netbeans.jemmy.QueueTool().waitEmpty(250);
 
-        // remove SystemConsole log appenders so test framework output is not included
-//        if (SystemConsole.isCreated()) {
-//            SystemConsole.getInstance().close();
-//        }
     }
 
     /**
