@@ -51,6 +51,7 @@ abstract public class AbstractEditorTestBase<T extends Editor> {
     }
 
     @Test
+    @Disabled("This test produces different results when apps is split from jmri")
     public void checkHelpMenuExists() {
         Assume.assumeFalse(GraphicsEnvironment.isHeadless());
         e.setVisible(true);

@@ -7,6 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Disabled;
 
 /**
  *
@@ -38,6 +39,7 @@ public class StartupActionModelUtilTest {
      * apps.ActionListBundle.
      */
     @Test
+    @Disabled("jmri test testing something in apps")
     public void testActionListBundleIsImplemented() {
         testNamedBundleIsImplemented("apps.ActionListBundle");
     }
@@ -47,6 +49,7 @@ public class StartupActionModelUtilTest {
      * apps.ActionListCoreBundle.
      */
     @Test
+    @Disabled("jmri test testing something in apps")
     public void testActionListCoreBundleIsImplemented() {
         testNamedBundleIsImplemented("apps.ActionListCoreBundle");
     }
