@@ -301,7 +301,7 @@
         <testSourceDirectory>../java/test/jmri</testSourceDirectory>
         <resources>
             <resource>
-                <directory>../java/src/jmri</directory>
+                <directory>../java/src</directory>
                 <filtering>false</filtering>
                 <includes>
                     <include>**</include>

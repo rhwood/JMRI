@@ -294,7 +294,7 @@
         <testSourceDirectory>../java/test/apps</testSourceDirectory>
         <resources>
             <resource>
-                <directory>../java/src/apps</directory>
+                <directory>../java/src</directory>
                 <filtering>false</filtering>
                 <includes>
                     <include>**</include>
