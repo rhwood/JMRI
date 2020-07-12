@@ -14,42 +14,11 @@
     </parent>
 
     <properties>
-        <basedir>../</basedir>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <release.build_user>${user.name}</release.build_user>
-        <release.build_date>${maven.build.timestamp}</release.build_date>
-        <!-- it would be better to get current year from machine clock -->
-        <jmri.copyright.year>${project.inceptionYear}-${current.year}</jmri.copyright.year>
-        <!-- dependency versions (its easier to include version in dependency
-        but if multiple dependencies are linked, use a property for single
-        dependency source) -->
-        <cucumber.version>4.3.1</cucumber.version>
-        <jetty.version>9.4.28.v20200408</jetty.version>
-        <!-- this is a custom version, see lib/README.md -->
-        <jemmy.version>22-00c9f753cd0a</jemmy.version>
-        <slf4j.version>1.7.25</slf4j.version>
-        <jackson.version>2.10.0</jackson.version>
-        <jogamp.version>2.3.2</jogamp.version>
-        <openlcb.version>0.7.26</openlcb.version>
-        <netbeans.version>RELEASE113</netbeans.version>
-        <jacoco.version>0.8.5</jacoco.version>
-        <jacoco.reportDir>${basedir}/target/</jacoco.reportDir>
         <!-- test environment -->
-        <jmri.path.program>${basedir}</jmri.path.program>
+        <jmri.path.program>${parent.basedir}</jmri.path.program>
         <jmri.prefsdir>${basedir}/temp</jmri.prefsdir>
         <jmri.shutdownmanager>jmri.util.MockShutDownManager</jmri.shutdownmanager>
-        <!-- don't load JInput during CI tests -->
-        <jinput.useDefaultPlugin>false</jinput.useDefaultPlugin>
-        <junit5.version>5.6.0</junit5.version>
-        <junit.platform.version>1.6.0</junit.platform.version>
-        <argLine>-Xmx1536m -Duser.language=en -Duser.region=US</argLine>
-        <!-- define argLines to allow running surefire:test -->
-        <surefire.argLine></surefire.argLine>
-        <failsafe.argLine></failsafe.argLine>
-        <surefire.version>2.22.0</surefire.version>
-        <failsafe.version>2.22.0</failsafe.version>
-        <jqassistant.version>1.6.0</jqassistant.version>
-        <checkstyle.config.location>${basedir}/checkstyle.xml</checkstyle.config.location>
+        <checkstyle.config.location>${parent.basedir}/checkstyle.xml</checkstyle.config.location>
     </properties>
 
     <profiles>
@@ -134,7 +103,7 @@
                                     <failOnViolation>true</failOnViolation>
                                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
                                     <sourceDirectories>
-                                        <sourceDirectory>${basedir}</sourceDirectory>
+                                        <sourceDirectory>${parent.basedir}/java/src/apps</sourceDirectory>
                                     </sourceDirectories>
                                     <includes>**/*</includes>
                                     <excludes>**/*.jpg,**/*.PNG,**/*.jar,**/*.dll,**/*.dylib,**/*.so,**/*.exe,
@@ -164,9 +133,9 @@
                             <source>1.8</source>
                             <target>1.8</target>
                             <compilerArgs>
-                                <properties>${basedir}/java/ecj.warning.options-ci</properties>
+                                <properties>${parent.basedir}/java/ecj.warning.options-ci</properties>
                                 <arg>-sourcepath</arg>
-                                <arg>${basedir}/java/src:${basedir}/target/generated-sources</arg>
+                                <arg>${parent.basedir}/java/src:${basedir}/target/generated-sources</arg>
                             </compilerArgs>
                         </configuration>
                         <dependencies>
@@ -210,7 +179,7 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <executable>scripts/tidy-check.sh</executable>
+                            <executable>${parent.basedir}scripts/tidy-check.sh</executable>
                             <arguments>
                                 <argument>help/en/*/*</argument>
                                 <argument>help/fr/*/*</argument>
@@ -399,9 +368,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire.version}</version>
                 <configuration>
-                    <additionalClasspathElements>
-                        <additionalClasspathElement>${basedir}</additionalClasspathElement>
-                    </additionalClasspathElements>
                     <excludes>
                         <!-- ignore until #3492 is resolved -->
                         <exclude>%regex[jmri.jmrix.loconet.locormi.LnMessage[Client|Server]Test]</exclude>
@@ -421,15 +387,17 @@
                         <exclude>jmri.util.TestWaitsForever</exclude>
                     </excludes>
                     <systemPropertyVariables>
-                        <jmri.path.program>${basedir}</jmri.path.program>
+                        <jmri.path.program>${parent.basedir}</jmri.path.program>
+                        <jmri.path.resources>${parent.basedir}/resources</jmri.path.resources>
                         <jmri.prefsdir>${basedir}/temp</jmri.prefsdir>
+                        <jmri.log4jconfigfilename>${basedir}/tests.lcf</jmri.log4jconfigfilename>
                         <jmri.shutdownmanager>jmri.util.MockShutDownManager</jmri.shutdownmanager>
                         <jinput.useDefaultPlugin>false</jinput.useDefaultPlugin><!-- don't load JInput during CI tests -->
                     </systemPropertyVariables>
                     <trimStackTrace>false</trimStackTrace>
-                    <workingDirectory>${basedir}</workingDirectory>
+                    <workingDirectory>../</workingDirectory>
                     <!-- -ea or -da in the next line to control Java asserts -->
-                    <argLine>@{argLine} @{surefire.argLine} -Djava.security.policy=${basedir}/lib/security.policy</argLine>
+                    <argLine>@{argLine} @{surefire.argLine} -Djava.security.policy=../lib/security.policy</argLine>
                     <useSystemClassLoader>true</useSystemClassLoader>
                     <useManifestOnlyJar>false</useManifestOnlyJar>
                     <!-- forkCount causes tests to run in forked JVMs.  The following the number with C says to fork the number multiplied by the number of cores available. -->
@@ -449,7 +417,7 @@
                             <goal>verify</goal>
                         </goals>
                         <configuration>
-                            <argLine>@{argLine} @{failsafe.argLine} -Djava.security.policy=${basedir}/lib/security.policy</argLine>
+                            <argLine>@{argLine} @{failsafe.argLine} -Djava.security.policy=../lib/security.policy</argLine>
                         </configuration>
                     </execution>
                 </executions>
@@ -459,15 +427,6 @@
                 <artifactId>buildnumber-maven-plugin</artifactId>
                 <version>1.4</version>
                 <executions>
-                    <!-- we don't need these at this time
-                    <execution>
-                        <id>validate</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>create</goal>
-                        </goals>
-                    </execution>
-                    -->
                     <execution>
                         <id>generate</id>
                         <phase>generate-resources</phase>
@@ -540,8 +499,8 @@
                 <configuration>
                     <!-- differs from ant-produced Javadocs by including JMRI version -->
                     <maxmemory>512m</maxmemory>
-                    <overview>${basedir}/java/src/jmri/overview.html</overview>
-                    <sourcepath>${basedir}/java/src</sourcepath>
+                    <overview>../java/src/jmri/overview.html</overview>
+                    <sourcepath>../java/src</sourcepath>
                     <show>package</show>
                     <!-- change from default 100 warnings; keep number synced with ant javadoc target -->
                     <additionalJOption>-breakiterator -Xmaxwarns 100</additionalJOption><!-- 100 is default, here so we can easily change it -->
@@ -832,7 +791,7 @@
                     <failOnViolation>true</failOnViolation>
                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
                     <sourceDirectories>
-                        <sourceDirectory>${basedir}</sourceDirectory>
+                        <sourceDirectory>../java/src/apps</sourceDirectory>
                     </sourceDirectories>
                     <includes>**/*</includes>
                     <excludes>**/*.jpg,**/*.PNG,**/*.jar,**/*.dll,**/*.dylib,**/*.so,**/*.exe,
@@ -1014,12 +973,12 @@
         <dependency>
             <groupId>org.jmri</groupId>
             <artifactId>jmri</artifactId>
-            <version>4.21.1-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jmri</groupId>
             <artifactId>testutil</artifactId>
-            <version>4.21.1-SNAPSHOT</version>
+            <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>

@@ -13,6 +13,14 @@
         <version>4.21.1-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <!-- test environment -->
+        <jmri.path.program>${parent.basedir}</jmri.path.program>
+        <jmri.prefsdir>${basedir}/temp</jmri.prefsdir>
+        <jmri.shutdownmanager>jmri.util.MockShutDownManager</jmri.shutdownmanager>
+        <checkstyle.config.location>${parent.basedir}/checkstyle.xml</checkstyle.config.location>
+    </properties>
+
     <profiles>
         <profile>
             <id>travis-headless</id>
@@ -102,7 +110,7 @@
                                     <failOnViolation>true</failOnViolation>
                                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
                                     <sourceDirectories>
-                                        <sourceDirectory>../java/src/jmri</sourceDirectory>
+                                        <sourceDirectory>${parent.basedir}/java/src/jmri</sourceDirectory>
                                     </sourceDirectories>
                                     <includes>**/*</includes>
                                     <excludes>**/*.jpg,**/*.PNG,**/*.jar,**/*.dll,**/*.dylib,**/*.so,**/*.exe,
@@ -132,9 +140,9 @@
                             <source>1.8</source>
                             <target>1.8</target>
                             <compilerArgs>
-                                <properties>../java/ecj.warning.options-ci</properties>
+                                <properties>${parent.basedir}/java/ecj.warning.options-ci</properties>
                                 <arg>-sourcepath</arg>
-                                <arg>../java/src:target/generated-sources</arg>
+                                <arg>${parent.basedir}/java/src:target/generated-sources</arg>
                             </compilerArgs>
                         </configuration>
                         <dependencies>
@@ -178,7 +186,7 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <executable>scripts/tidy-check.sh</executable>
+                            <executable>${parent.basedir}/scripts/tidy-check.sh</executable>
                             <arguments>
                                 <argument>help/en/*/*</argument>
                                 <argument>help/fr/*/*</argument>
@@ -293,7 +301,7 @@
         <testSourceDirectory>../java/test/jmri</testSourceDirectory>
         <resources>
             <resource>
-                <directory>../java/src</directory>
+                <directory>../java/src/jmri</directory>
                 <filtering>false</filtering>
                 <includes>
                     <include>**</include>
@@ -389,9 +397,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire.version}</version>
                 <configuration>
-                    <additionalClasspathElements>
-                        <additionalClasspathElement>../</additionalClasspathElement>
-                    </additionalClasspathElements>
                     <excludes>
                         <!-- ignore until #3492 is resolved -->
                         <exclude>%regex[jmri.jmrix.loconet.locormi.LnMessage[Client|Server]Test]</exclude>
@@ -411,8 +416,10 @@
                         <exclude>jmri.util.TestWaitsForever</exclude>
                     </excludes>
                     <systemPropertyVariables>
-                        <jmri.path.program>../</jmri.path.program>
-                        <jmri.prefsdir>../temp</jmri.prefsdir>
+                        <jmri.path.program>${parent.basedir}</jmri.path.program>
+                        <jmri.path.resources>${parent.basedir}/resources</jmri.path.resources>
+                        <jmri.prefsdir>${basedir}/target/temp</jmri.prefsdir>
+                        <jmri.log4jconfigfilename>${basedir}/tests.lcf</jmri.log4jconfigfilename>
                         <jmri.shutdownmanager>jmri.util.MockShutDownManager</jmri.shutdownmanager>
                         <jinput.useDefaultPlugin>false</jinput.useDefaultPlugin><!-- don't load JInput during CI tests -->
                     </systemPropertyVariables>
@@ -449,15 +456,6 @@
                 <artifactId>buildnumber-maven-plugin</artifactId>
                 <version>1.4</version>
                 <executions>
-                    <!-- we don't need these at this time
-                    <execution>
-                        <id>validate</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>create</goal>
-                        </goals>
-                    </execution>
-                    -->
                     <execution>
                         <id>generate</id>
                         <phase>generate-resources</phase>
@@ -784,19 +782,6 @@
             </plugin>
             -->
             <plugin>
-                <groupId>org.sonatype.ossindex.maven</groupId>
-                <artifactId>ossindex-maven-plugin</artifactId>
-                <version>3.0.4</version>
-                <configuration>
-                    <fail>true</fail>
-                    <!-- List packages with vulnerabilities to ignore. -->
-                    <!-- Include an issue in GitHub for each ignored package -->
-                    <!-- documenting why the vulnerability is ignored. -->
-                    <excludeCoordinates>
-                    </excludeCoordinates>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
                 <version>3.0.0-M2</version>
@@ -915,17 +900,6 @@
                             </goals>
                         </execution>
                     </executions>
-                </plugin>
-                <plugin>
-                    <groupId>org.sonatype.plugins</groupId>
-                    <artifactId>nexus-staging-maven-plugin</artifactId>
-                    <version>1.6.7</version>
-                    <extensions>true</extensions>
-                    <configuration>
-                        <serverId>ossrh</serverId>
-                        <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                        <autoReleaseAfterClose>false</autoReleaseAfterClose>
-                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>com.buschmais.jqassistant</groupId>
