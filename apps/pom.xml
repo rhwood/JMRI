@@ -417,6 +417,7 @@
                             <goal>verify</goal>
                         </goals>
                         <configuration>
+                            <workingDirectory>../</workingDirectory>
                             <argLine>@{argLine} @{failsafe.argLine} -Djava.security.policy=../lib/security.policy</argLine>
                         </configuration>
                     </execution>
