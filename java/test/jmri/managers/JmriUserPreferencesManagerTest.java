@@ -702,6 +702,7 @@ public class JmriUserPreferencesManagerTest {
     }
 
     @Test
+    @Disabled("test references bundle in apps")
     public void testGetClassDescription_String() {
         UserPreferencesManager m = new TestJmriUserPreferencesManager();
         m.setSaveAllowed(false);
@@ -726,6 +727,7 @@ public class JmriUserPreferencesManagerTest {
     }
 
     @Test
+    @Disabled("test references bundle in apps")
     public void testSetClassDescription() {
         UserPreferencesManager m = new TestJmriUserPreferencesManager();
         m.setSaveAllowed(false);
