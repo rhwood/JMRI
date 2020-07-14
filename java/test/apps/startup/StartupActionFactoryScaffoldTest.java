@@ -19,7 +19,7 @@ public class StartupActionFactoryScaffoldTest {
         StartupActionModelUtil t = StartupActionModelUtil.getDefault();
         Assert.assertNotNull("exists",t);
         for (Class c : t.getClasses()) {
-            if ("java.lang.String".equals(c.getName())) found = true;
+            if ("apps.RestartAction".equals(c.getName())) found = true;
         }
         Assert.assertTrue("class is loaded", found);
     }
