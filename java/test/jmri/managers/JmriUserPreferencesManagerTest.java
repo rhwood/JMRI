@@ -10,7 +10,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.HashMap;
-import java.util.ResourceBundle;
 
 import javax.swing.*;
 
@@ -734,7 +733,7 @@ public class JmriUserPreferencesManagerTest {
         Assert.assertNotNull(m.getClassDescription(strClass));
         Assert.assertTrue(m.getClassDescription(strClass).isEmpty());
         m.setClassDescription(JPanel.class.getName());
-        Assert.assertEquals("", m.getClassDescription(JPanel.class.getName()));
+        Assert.assertEquals(null, m.getClassDescription(JPanel.class.getName()));
     }
 
     @Test
