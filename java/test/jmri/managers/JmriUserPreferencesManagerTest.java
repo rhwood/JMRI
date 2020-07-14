@@ -702,7 +702,6 @@ public class JmriUserPreferencesManagerTest {
     }
 
     @Test
-    @Disabled("test references bundle in apps")
     public void testGetClassDescription_String() {
         UserPreferencesManager m = new TestJmriUserPreferencesManager();
         m.setSaveAllowed(false);
@@ -711,8 +710,7 @@ public class JmriUserPreferencesManagerTest {
         m.setPreferenceState(strClass, "test1", true);
         Assert.assertNull(m.getClassDescription(strClass));
         m.setPreferenceState(JPanel.class.getName(), "test1", true);
-        String d = ResourceBundle.getBundle("apps.AppsConfigBundle").getString("Application");
-        Assert.assertEquals(d, m.getClassDescription(JPanel.class.getName()));
+        Assert.assertEquals("", m.getClassDescription(JPanel.class.getName()));
     }
 
     @Test
@@ -727,7 +725,6 @@ public class JmriUserPreferencesManagerTest {
     }
 
     @Test
-    @Disabled("test references bundle in apps")
     public void testSetClassDescription() {
         UserPreferencesManager m = new TestJmriUserPreferencesManager();
         m.setSaveAllowed(false);
@@ -737,8 +734,7 @@ public class JmriUserPreferencesManagerTest {
         Assert.assertNotNull(m.getClassDescription(strClass));
         Assert.assertTrue(m.getClassDescription(strClass).isEmpty());
         m.setClassDescription(JPanel.class.getName());
-        String d = ResourceBundle.getBundle("apps.AppsConfigBundle").getString("Application");
-        Assert.assertEquals(d, m.getClassDescription(JPanel.class.getName()));
+        Assert.assertEquals("", m.getClassDescription(JPanel.class.getName()));
     }
 
     @Test
