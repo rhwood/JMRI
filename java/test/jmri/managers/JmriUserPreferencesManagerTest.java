@@ -709,7 +709,7 @@ public class JmriUserPreferencesManagerTest {
         m.setPreferenceState(strClass, "test1", true);
         Assert.assertNull(m.getClassDescription(strClass));
         m.setPreferenceState(JPanel.class.getName(), "test1", true);
-        Assert.assertEquals("", m.getClassDescription(JPanel.class.getName()));
+        Assert.assertEquals(null, m.getClassDescription(JPanel.class.getName()));
     }
 
     @Test
@@ -733,7 +733,7 @@ public class JmriUserPreferencesManagerTest {
         Assert.assertNotNull(m.getClassDescription(strClass));
         Assert.assertTrue(m.getClassDescription(strClass).isEmpty());
         m.setClassDescription(JPanel.class.getName());
-        Assert.assertEquals(null, m.getClassDescription(JPanel.class.getName()));
+        Assert.assertEquals("", m.getClassDescription(JPanel.class.getName()));
     }
 
     @Test
