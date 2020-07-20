@@ -1,11 +1,11 @@
 package apps.util;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.lang.reflect.Field;
 
 public class AppsUtil {
-
     /*
      * Use reflection to reset the apps.AppsBase instance
      */
@@ -20,5 +20,6 @@ public class AppsUtil {
         }
     }
 
-    private final static org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(AppsUtil.class);
+    private static final Logger log = LoggerFactory.getLogger(AppsUtil.class);
+
 }

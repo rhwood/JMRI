@@ -2,6 +2,8 @@ package apps;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
+
+import apps.util.AppsUtil;
 import cucumber.api.java8.En;
 import java.io.File;
 import org.apache.commons.io.FileUtils;
