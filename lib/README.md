@@ -241,7 +241,7 @@ NOTE: joal.jar is currently replaced by an own-built version with modifications 
 - From http://patrick.lidstone.net/html/dev_tools.html
 - See license http://patrick.lidstone.net/html/xap.html
 
-##### xbee-java-library-1.2.1.jar
+##### xbee-java-library-1.3.0.jar
 - Official XBee support library from Digi
 - from https://github.com/digidotcom/XBeeJavaLibrary
 
