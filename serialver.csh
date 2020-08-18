@@ -1,4 +1,5 @@
 #! /bin/sh
+# SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 #
 # Script to run the serialver tool on a JMRI class
 #

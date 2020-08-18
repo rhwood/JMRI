@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 #
 # Copy a key and value from one set of properties files to another set,
 # including all existing locales for that key

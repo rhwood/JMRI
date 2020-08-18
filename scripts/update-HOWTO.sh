@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 #
 # Does an edit of the scripts/HOWTO-distribution.md page to 
 #   update the version numbers within it.  Use this to 

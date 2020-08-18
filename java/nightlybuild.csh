@@ -1,4 +1,5 @@
 #! /bin/tcsh -f
+# SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 #
 # Short script to run the nightly build
 #

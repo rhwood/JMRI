@@ -1,4 +1,5 @@
 #! /bin/bash
+# SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 # scan the help files for HMTL errors, used in 'ant html'
 # if an argument is provided, i.e. "help/en/*/*" scan there, otherwise scan all the help
 
