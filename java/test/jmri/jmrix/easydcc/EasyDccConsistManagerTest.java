@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 /**
  * Tests for the jmri.jmrix.nce.EasyDccConsistManager class
  *
