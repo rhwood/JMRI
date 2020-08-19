@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0 -->
 <?xml-stylesheet type="text/xsl" href="../XSLT/decoder.xsl"?>
 <!-- version 4 - Alain Le Marchand - add CV157 + Simplified productID for PD05 and PD12: no more version indicated -->
 <!-- version 3 - Alain Le Marchand - redesigned for split CVs with enums -->
