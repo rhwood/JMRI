@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 /**
  * Consist Manager for use with the EasyDccConsist class for the
  * consists it builds.

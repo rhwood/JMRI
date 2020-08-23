@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 /* This is a parser grammar for the JMRI simple interconnection
 protocol written for code generation with javacc */
 

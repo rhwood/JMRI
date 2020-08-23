@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 package jmri.jmrix.cmri.serial.configurexml;
 
 import jmri.util.JUnitUtil;

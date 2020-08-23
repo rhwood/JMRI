@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 /**
  * This package provides OS X Desktop compatibility with the Aqua user interface.
  * <p>

@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 package jmri.jmrit.simpleclock;
 
 import java.awt.Container;
@@ -718,6 +719,7 @@ public class SimpleClockFrame extends JmriJFrame implements PropertyChangeListen
         // Format and display the time
         timeLabel.setText(" " + (hours / 10) + (hours - (hours / 10) * 10) + ":"
                 + (minutes / 10) + (minutes - (minutes / 10) * 10));
+        timeLabel.setToolTipText(clock.getTime().toString());
     }
 
     /**

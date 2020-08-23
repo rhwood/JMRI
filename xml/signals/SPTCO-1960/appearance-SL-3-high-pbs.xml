@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0 -->
 <?xml-stylesheet href="/xml/XSLT/appearancetable.xsl" type="text/xsl"?>
 <appearancetable
     xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"

@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 /**
  * This package provides two mechanisms for storing preferences and one
  * mechanism for storing user interface state within a JMRI profile:

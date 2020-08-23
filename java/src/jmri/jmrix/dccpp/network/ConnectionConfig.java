@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 package jmri.jmrix.dccpp.network;
 
 import javax.swing.JPanel;
@@ -57,8 +58,7 @@ public class ConnectionConfig extends jmri.jmrix.AbstractNetworkConnectionConfig
         hostNameField.setText(adapter.getHostName());
         portFieldLabel.setText(Bundle.getMessage("CommunicationPortLabel"));
         portField.setText(String.valueOf(adapter.getPort()));
-        portField.setEnabled(false); // we can't change this now.
-        //opt1Box.setEnabled(false); // we can't change this now.
+        portField.setEnabled(true);
     }
 
     @Override
