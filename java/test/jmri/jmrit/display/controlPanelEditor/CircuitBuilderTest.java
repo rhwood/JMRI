@@ -44,6 +44,15 @@ public class CircuitBuilderTest {
     }
 
     @Test
+    public void testOpenCBWindow() {
+        getCPEandCB();
+
+        cb.openCBWindow();
+        cb.closeCBWindow();
+    }
+
+
+    @Test
     public void testEditCircuitFrame() {
         getCPEandCB();
 

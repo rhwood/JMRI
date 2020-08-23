@@ -39,7 +39,6 @@ public class SignalMastItemPanel extends TableItemPanel<SignalMast> {
     @Override
     public void init(ActionListener doneAction, HashMap<String, NamedIcon> iconMap) {
         super.init(doneAction, iconMap);
-        remove(_iconFamilyPanel);
     }
 
     @Override

@@ -616,8 +616,8 @@ public class PositionableLabel extends JLabel implements Positionable {
      */
     public DisplayFrame makePaletteFrame(String title) {
         jmri.jmrit.display.palette.ItemPalette.loadIcons();
-
-        return new DisplayFrame(title, _editor);
+        DisplayFrame frame = new DisplayFrame(title, _editor);
+        return frame;
     }
 
     public void initPaletteFrame(DisplayFrame paletteFrame, @Nonnull ItemPanel itemPanel) {
@@ -627,8 +627,22 @@ public class PositionableLabel extends JLabel implements Positionable {
         sp.setPreferredSize(dim);
         paletteFrame.add(sp);
         paletteFrame.pack();
+        paletteFrame.addWindowListener(new PaletteFrameCloser(itemPanel));
+
         jmri.InstanceManager.getDefault(jmri.util.PlaceWindow.class).nextTo(_editor, this, paletteFrame);
         paletteFrame.setVisible(true);
+    }
+
+    static class PaletteFrameCloser extends java.awt.event.WindowAdapter {
+        ItemPanel ip;
+        PaletteFrameCloser( @Nonnull ItemPanel itemPanel) {
+            super();
+            ip = itemPanel;
+        }
+        @Override
+        public void windowClosing(java.awt.event.WindowEvent e) {
+            ip.closeDialogs();
+        }
     }
 
     public void finishItemUpdate(DisplayFrame paletteFrame, @Nonnull ItemPanel itemPanel) {
