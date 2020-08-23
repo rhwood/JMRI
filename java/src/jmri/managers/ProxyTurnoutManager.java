@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 package jmri.managers;
 
 import java.util.Arrays;
@@ -15,7 +16,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author Bob Jacobsen Copyright (C) 2003, 2010
  */
-public class ProxyTurnoutManager extends AbstractProxyManager<Turnout> implements TurnoutManager {
+public class ProxyTurnoutManager extends AbstractProvidingProxyManager<Turnout> implements TurnoutManager {
 
     public ProxyTurnoutManager() {
         super();

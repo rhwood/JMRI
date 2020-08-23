@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 package jmri.jmrit.display.controlPanelEditor;
 
 import java.awt.event.ActionEvent;
@@ -136,7 +137,7 @@ public class EditPortalDirection extends EditFrame implements ActionListener, Li
     public void valueChanged(ListSelectionEvent e) {
         Portal portal = _portalList.getSelectedValue();
         if (portal != null) {
-            List<PortalIcon> piArray = _parent.getPortalIconMap(portal);
+            List<PortalIcon> piArray = _parent.getPortalIcons(portal);
             if (piArray.isEmpty()) {
                 JOptionPane.showMessageDialog(this, Bundle.getMessage("portalHasNoIcon", portal.getName()),
                         Bundle.getMessage("incompleteCircuit"), JOptionPane.INFORMATION_MESSAGE);

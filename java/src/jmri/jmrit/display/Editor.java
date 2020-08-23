@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 package jmri.jmrit.display;
 
 import java.awt.BasicStroke;
@@ -613,6 +614,10 @@ abstract public class Editor extends JmriJFrame implements MouseListener, MouseM
             _highlightColor = color;
         }
 
+        public Color getHighlightColor() {
+            return _highlightColor;
+        }
+
         public void setSelectGroupColor(Color color) {
             _selectGroupColor = color;
         }
@@ -639,14 +644,7 @@ abstract public class Editor extends JmriJFrame implements MouseListener, MouseM
                 g2d = (Graphics2D) g;
                 g2d.scale(_paintScale, _paintScale);
             }
-
-            // It is rather unpleasant that the following needs to be done in a try-catch, but exceptions have been observed
-            try {
-               super.paint(g);
-               paintTargetPanel(g);
-            } catch (Exception e) {
-                log.error("paint failed in thread {} {}: ", Thread.currentThread().getName(), Thread.currentThread().getId(), e);
-            }
+            super.paint(g);
 
             Stroke stroke = new BasicStroke();
             if (g2d != null) {
@@ -686,6 +684,8 @@ abstract public class Editor extends JmriJFrame implements MouseListener, MouseM
                 g.drawRect(_highlightcomponent.x, _highlightcomponent.y,
                         _highlightcomponent.width, _highlightcomponent.height);
             }
+            paintTargetPanel(g);
+
             g.setColor(color);
             if (g2d != null) {
                 g2d.setStroke(stroke);

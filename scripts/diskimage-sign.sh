@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 #
 # Create a signed and notarized JMRI macOS disk image (from diskimage.sh) from an unsigned one
 #   This is structured to use the Mac OS X tools when run on a Mac, and native Linux tools when run on a Linux box,

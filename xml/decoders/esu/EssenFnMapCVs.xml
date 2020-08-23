@@ -1,4 +1,5 @@
 <!-- Copyright (C) JMRI 2019 All rights reserved -->
+<!-- SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0 -->
 
 <variables xmlns:xi="http://www.w3.org/2001/XInclude"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

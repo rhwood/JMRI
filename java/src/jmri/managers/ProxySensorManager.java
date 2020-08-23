@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 package jmri.managers;
 
 import javax.annotation.Nonnull;
@@ -12,7 +13,7 @@ import jmri.SensorManager;
  *
  * @author Bob Jacobsen Copyright (C) 2003, 2010
  */
-public class ProxySensorManager extends AbstractProxyManager<Sensor>
+public class ProxySensorManager extends AbstractProvidingProxyManager<Sensor>
         implements SensorManager {
 
     public ProxySensorManager() {

@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 package jmri.util.com.sun;
 
 // This class comes from the Java Swing tutorial at

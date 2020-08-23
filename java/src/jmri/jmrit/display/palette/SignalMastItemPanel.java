@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 package jmri.jmrit.display.palette;
 
 import java.awt.event.ActionListener;
@@ -38,7 +39,6 @@ public class SignalMastItemPanel extends TableItemPanel<SignalMast> {
     @Override
     public void init(ActionListener doneAction, HashMap<String, NamedIcon> iconMap) {
         super.init(doneAction, iconMap);
-        remove(_iconFamilyPanel);
     }
 
     @Override

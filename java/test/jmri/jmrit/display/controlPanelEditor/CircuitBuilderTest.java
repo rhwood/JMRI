@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 package jmri.jmrit.display.controlPanelEditor;
 
 import java.awt.GraphicsEnvironment;
@@ -41,6 +42,15 @@ public class CircuitBuilderTest {
         f.dispose();
         JUnitUtil.dispose(f);
     }
+
+    @Test
+    public void testOpenCBWindow() {
+        getCPEandCB();
+
+        cb.openCBWindow();
+        cb.closeCBWindow();
+    }
+
 
     @Test
     public void testEditCircuitFrame() {
