@@ -1,4 +1,5 @@
 <variables xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://jmri.org/xml/schema/decoder.xsd">
+<!-- SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0 -->
   <variable item="FL(f) controls output 1" CV="33" mask="XXXXXXXV" default="1">
     <xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
   </variable>

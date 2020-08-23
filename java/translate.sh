@@ -1,4 +1,5 @@
 #! /bin/sh -f
+# SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 #
 # For purposes of testing internationalization, this script creates
 # temporary properties files in the "classes" tree in a JMRI development
