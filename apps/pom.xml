@@ -304,7 +304,7 @@
                 </excludes>
             </resource>
             <resource>
-                <directory>../java/maven-template</directory>
+                <directory>../java/template</directory>
                 <filtering>true</filtering>
                 <includes>
                     <include>jmri/Version.properties</include>
