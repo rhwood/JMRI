@@ -1,4 +1,5 @@
 #
+# SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 #
 # script to check for dependencies; output is bad
 #

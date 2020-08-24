@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 package jmri.jmrit.display.controlPanelEditor;
 
 import java.awt.Component;
@@ -37,6 +38,17 @@ public class PortalList extends JList<Portal> {
 
     void dataChange() {
         _portalListModel.dataChange();
+    }
+
+    void setSelected(Portal portal) {
+        List<Portal> list = _portalListModel._homeBlock.getPortals();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).equals(portal)) {
+                setSelectedIndex(i);
+                return;
+            }
+        }
+        clearSelection();
     }
 
     private static class PortalCellRenderer extends JLabel implements ListCellRenderer<Portal>{

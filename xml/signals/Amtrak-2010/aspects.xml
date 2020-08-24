@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0 -->
 <?xml-stylesheet href="../../XSLT/aspecttable.xsl" type="text/xsl"?>
 <aspecttable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://jmri.org/xml/schema/aspecttable.xsd">
   <name>Amtrak-2010</name>

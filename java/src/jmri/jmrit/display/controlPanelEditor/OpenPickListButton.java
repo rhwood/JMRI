@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 package jmri.jmrit.display.controlPanelEditor;
 
 import java.awt.FlowLayout;
@@ -31,20 +32,20 @@ public class OpenPickListButton<T extends NamedBean> {
     PickListModel<T> _model;
     Window _parent;
    
-    OpenPickListButton(String[] blurbLines, PickListModel<T> model, Window parent) {
+    OpenPickListButton(String[] blurbLines, PickListModel<T> model, Window parent, String buttonCaption) {
         _model = model;
         _blurbLines = blurbLines;
-        _buttonPanel = makePickListPanel();
+        _buttonPanel = makePickListPanel(buttonCaption);
         _parent = parent;
     }
 
-    private JPanel makePickListPanel() {
+    private JPanel makePickListPanel(String buttonCaption) {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
 
-        _openPicklistButton = new JButton(Bundle.getMessage("OpenPicklist", _model.getName()));
+        _openPicklistButton = new JButton(buttonCaption);
         _openPicklistButton.addActionListener((ActionEvent a) -> {
             if (_pickFrame == null) {
                 openPickList();

@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 package jmri.jmrit.display.controlPanelEditor;
 
 import java.awt.Dimension;
@@ -128,7 +129,8 @@ public class EditCircuitFrame extends EditFrame implements PropertyChangeListene
 
         String[] blurbLines = { Bundle.getMessage("DragOccupancySensor", Bundle.getMessage("DetectionSensor")),
                                 Bundle.getMessage("DragErrorName", Bundle.getMessage("ErrorSensor"))};
-        _pickTable = new OpenPickListButton<>(blurbLines, PickListModel.sensorPickModelInstance(), this);
+        _pickTable = new OpenPickListButton<>(blurbLines, PickListModel.sensorPickModelInstance(),
+                this, Bundle.getMessage("OpenPicklist", Bundle.getMessage("BeanNameSensor")));
         contentPane.add(_pickTable.getButtonPanel());
         contentPane.add(Box.createVerticalStrut(STRUT_SIZE));
 

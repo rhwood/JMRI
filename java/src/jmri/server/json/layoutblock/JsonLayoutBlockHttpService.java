@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 package jmri.server.json.layoutblock;
 
 import static jmri.server.json.JSON.DATA;

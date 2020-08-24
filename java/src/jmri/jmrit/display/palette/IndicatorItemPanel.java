@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 package jmri.jmrit.display.palette;
 
 import java.awt.datatransfer.DataFlavor;
@@ -43,6 +44,24 @@ public class IndicatorItemPanel extends FamilyItemPanel {
             add(_detectPanel, 1);
         }
         hideIcons();
+    }
+
+    @Override
+    protected void hideIcons() {
+        if (_detectPanel != null) {
+            _detectPanel.setVisible(true);
+            _detectPanel.invalidate();
+        }
+        super.hideIcons();
+    }
+
+    @Override
+    protected void showIcons() {
+        if (_detectPanel != null) {
+            _detectPanel.setVisible(false);
+            _detectPanel.invalidate();
+        }
+        super.showIcons();
     }
 
     /**

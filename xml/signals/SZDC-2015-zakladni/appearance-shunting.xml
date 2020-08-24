@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0 -->
 <?xml-stylesheet href="/xml/XSLT/appearancetable.xsl" type="text/xsl"?>
 
 <appearancetable
@@ -30,6 +31,12 @@
         <authorinitials>PŠ</authorinitials>
         <revremark>Panel indicators</revremark>
     </revision>    
+    <revision>
+        <revnumber>3</revnumber>
+        <date>2020-08-10</date>
+        <authorinitials>PŠ</authorinitials>
+        <revremark>Panel indicators JOP</revremark>
+    </revision>    
   </revhistory>
 
   <aspecttable>SZDC-2015-zakladni</aspecttable>
@@ -43,6 +50,7 @@
       <imagelink type="prototype">../../../resources/icons/largeschematics/aspects/SZDC-2015/327_pz_sn.gif</imagelink>
       <imagelink type="AŽD b">../../../resources/icons/smallschematics/aspects/CSD/AZD/27_w.png</imagelink>
       <imagelink type="ESP b">../../../resources/icons/smallschematics/aspects/CSD/ESP/27_w.png</imagelink>
+      <imagelink type="JOP seřaďovací">../../../resources/icons/smallschematics/aspects/CSD/JOP/signal_shunting_grey.png</imagelink>
     </appearance>
 
     <appearance>
@@ -50,6 +58,7 @@
       <imagelink type="prototype">../../../resources/icons/largeschematics/aspects/SZDC-2015/328_pd_sn.gif</imagelink>
       <imagelink type="AŽD b">../../../resources/icons/smallschematics/aspects/CSD/AZD/28_w.png</imagelink>
       <imagelink type="ESP b">../../../resources/icons/smallschematics/aspects/CSD/ESP/28_w.png</imagelink>
+      <imagelink type="JOP seřaďovací">../../../resources/icons/smallschematics/aspects/CSD/JOP/signal_shunting_white.png</imagelink>
     </appearance>
 
   </appearances>

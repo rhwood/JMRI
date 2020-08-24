@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 package jmri.jmrit.beantable.oblock;
 
 import java.beans.PropertyChangeEvent;
@@ -129,7 +130,8 @@ public class BlockPortalTableModel extends AbstractTableModel implements Propert
     @Override
     public void propertyChange(PropertyChangeEvent e) {
         String property = e.getPropertyName();
-        if (property.equals("length") || property.equals("UserName")) {
+        if (property.equals("length") || property.equals("UserName") ||
+                property.equals("portalCount") ) {
             fireTableDataChanged();
         }
     }

@@ -1,4 +1,5 @@
 #! /bin/csh -f
+# SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 #
 # csh script to launch JHelpDev with the current directory set
 #

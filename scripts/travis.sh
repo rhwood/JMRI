@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 
 # be verbose and exit on any non-zero exit code
 # see https://docs.travis-ci.com/user/customizing-the-build/#Implementing-Complex-Build-Steps

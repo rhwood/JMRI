@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
  package jmri.jmrit.progsupport;
 
 import java.awt.GraphicsEnvironment;

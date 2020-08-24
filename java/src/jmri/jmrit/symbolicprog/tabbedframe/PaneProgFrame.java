@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 package jmri.jmrit.symbolicprog.tabbedframe;
 
 import java.awt.*;
@@ -53,6 +54,10 @@ abstract public class PaneProgFrame extends JmriJFrame
     JPanel tempPane; // passed around during construction
 
     boolean _opsMode;
+    
+    boolean maxFnNumDirty = false;
+    String maxFnNumOld = "";
+    String maxFnNumNew = "";
 
     RosterEntry _rosterEntry = null;
     RosterEntryPane _rPane = null;
@@ -70,6 +75,7 @@ abstract public class PaneProgFrame extends JmriJFrame
     String filename = null;
     String programmerShowEmptyPanes = "";
     String decoderShowEmptyPanes = "";
+    String decoderAllowResetDefaults = "";
 
     // GUI member declarations
     JTabbedPane tabPane = new JTabbedPane();
@@ -291,7 +297,7 @@ abstract public class PaneProgFrame extends JmriJFrame
             temp.add(modePane);
         }
         
-        // add add space for (programming) status message
+        // add space for (programming) status message
         bottom.add(new JSeparator(javax.swing.SwingConstants.HORIZONTAL));
         progStatus.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         bottom.add(progStatus);
@@ -879,14 +885,21 @@ abstract public class PaneProgFrame extends JmriJFrame
 
         // get the showEmptyPanes attribute, if yes/no update our state
         if (decoderRoot.getAttribute("showEmptyPanes") != null) {
-            if (log.isDebugEnabled()) {
-                log.debug("Found in decoder {}", decoderRoot.getAttribute("showEmptyPanes").getValue());
-            }
+            log.debug("Found in decoder showEmptyPanes={}", decoderRoot.getAttribute("showEmptyPanes").getValue());
             decoderShowEmptyPanes = decoderRoot.getAttribute("showEmptyPanes").getValue();
         } else {
             decoderShowEmptyPanes = "";
         }
         log.debug("decoderShowEmptyPanes={}", decoderShowEmptyPanes);
+
+        // get the allowResetDefaults attribute, if yes/no update our state
+        if (decoderRoot.getAttribute("allowResetDefaults") != null) {
+            log.debug("Found in decoder allowResetDefaults={}", decoderRoot.getAttribute("allowResetDefaults").getValue());
+            decoderAllowResetDefaults = decoderRoot.getAttribute("allowResetDefaults").getValue();
+        } else {
+            decoderAllowResetDefaults = "yes";
+        }
+        log.debug("decoderAllowResetDefaults={}", decoderAllowResetDefaults);
 
         // save the pointer to the model element
         modelElem = df.getModelElement();
@@ -896,6 +909,24 @@ abstract public class PaneProgFrame extends JmriJFrame
 
         // load sound names from model
         re.loadSounds(modelElem.getChild("soundlabels"), "model");
+
+        // load maxFnNum from model
+        Attribute a;
+        if ((a = modelElem.getAttribute("maxFnNum")) != null) {
+            maxFnNumOld = re.getMaxFnNum();
+            maxFnNumNew = a.getValue();
+            if (!maxFnNumOld.equals(maxFnNumNew)) {
+                if (!re.getId().equals(Bundle.getMessage("LabelNewDecoder"))) {
+                    maxFnNumDirty = true;
+                    log.info("maxFnNum for \"{}\" changed from {} to {}", re.getId(), maxFnNumOld, maxFnNumNew);
+                    String message = java.text.MessageFormat.format(
+                            SymbolicProgBundle.getMessage("StatusMaxFnNumUpdated"),
+                            re.getDecoderFamily(), re.getDecoderModel(), maxFnNumNew);
+                    progStatus.setText(message);
+                }
+                re.setMaxFnNum(maxFnNumNew);
+            }
+        }
 
     }
 
@@ -954,7 +985,7 @@ abstract public class PaneProgFrame extends JmriJFrame
      * @return true if file needs to be written
      */
     protected boolean checkDirtyFile() {
-        return (variableModel.fileDirty() || _rPane.guiChanged(_rosterEntry) || _flPane.guiChanged(_rosterEntry) || _rMPane.guiChanged(_rosterEntry));
+        return (variableModel.fileDirty() || _rPane.guiChanged(_rosterEntry) || _flPane.guiChanged(_rosterEntry) || _rMPane.guiChanged(_rosterEntry) || maxFnNumDirty);
     }
 
     protected void handleDirtyFile() {
@@ -999,6 +1030,9 @@ abstract public class PaneProgFrame extends JmriJFrame
                 // cancel requested
                 return; // without doing anything
             }
+        }
+        if(maxFnNumDirty && !maxFnNumOld.equals("")){ 
+            _rosterEntry.setMaxFnNum(maxFnNumOld);
         }
         // Check for a "<new loco>" roster entry; if found, remove it
         List<RosterEntry> l = Roster.getDefault().matchingList(null, null, null, null, null, null, Bundle.getMessage("LabelNewDecoder"));
@@ -1164,12 +1198,18 @@ abstract public class PaneProgFrame extends JmriJFrame
         // add the reset button
         JButton reset = new JButton(Bundle.getMessage("ButtonResetDefaults"));
         reset.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-        reset.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                resetToDefaults();
-            }
-        });
+        if (decoderAllowResetDefaults.equals("no")) {
+            reset.setEnabled(false);
+            reset.setToolTipText(Bundle.getMessage("TipButtonResetDefaultsDisabled"));
+        } else {
+            reset.setToolTipText(Bundle.getMessage("TipButtonResetDefaults"));
+            reset.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(java.awt.event.ActionEvent e) {
+                    resetToDefaults();
+                }
+            });
+        }
 
         int sizeX = Math.max(reset.getPreferredSize().width, store.getPreferredSize().width);
         int sizeY = Math.max(reset.getPreferredSize().height, store.getPreferredSize().height);
@@ -1806,6 +1846,7 @@ abstract public class PaneProgFrame extends JmriJFrame
 
         // mark this as a success
         variableModel.setFileDirty(false);
+        maxFnNumDirty = false;
 
         // and store an updated roster file
         FileUtil.createDirectory(FileUtil.getUserFilesPath());

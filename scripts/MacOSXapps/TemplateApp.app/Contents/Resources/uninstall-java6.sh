@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
 #
 # Remove the Apple provided Java SE 6
 #
