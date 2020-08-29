@@ -110,7 +110,7 @@
                                     <failOnViolation>true</failOnViolation>
                                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
                                     <sourceDirectories>
-                                        <sourceDirectory>${parent.basedir}/java/src/jmri</sourceDirectory>
+                                        <sourceDirectory>${basedir}/src/main/java/</sourceDirectory>
                                     </sourceDirectories>
                                     <includes>**/*</includes>
                                     <excludes>**/*.jpg,**/*.PNG,**/*.jar,**/*.dll,**/*.dylib,**/*.so,**/*.exe,
@@ -297,11 +297,9 @@
     </profiles>
 
     <build>
-        <sourceDirectory>../java/src/jmri</sourceDirectory>
-        <testSourceDirectory>../java/test/jmri</testSourceDirectory>
         <resources>
             <resource>
-                <directory>../java/src</directory>
+                <directory>${basedir}/src/main/java</directory>
                 <filtering>false</filtering>
                 <includes>
                     <include>**</include>
@@ -320,7 +318,7 @@
         </resources>
         <testResources>
             <testResource>
-                <directory>../java/test/jmri</directory>
+                <directory>${basedir}/src/test/java</directory>
                 <filtering>false</filtering>
                 <includes>
                     <include>**</include>
@@ -355,7 +353,7 @@
                 <artifactId>javacc-maven-plugin</artifactId>
                 <version>2.6</version>
                 <configuration>
-                    <sourceDirectory>../java/src/jmri</sourceDirectory>
+                    <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
                 </configuration>
                 <executions>
                     <execution>
@@ -810,7 +808,7 @@
                     <failOnViolation>true</failOnViolation>
                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
                     <sourceDirectories>
-                        <sourceDirectory>../java/src/jmri</sourceDirectory>
+                        <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
                     </sourceDirectories>
                     <includes>**/*</includes>
                     <excludes>**/*.jpg,**/*.PNG,**/*.jar,**/*.dll,**/*.dylib,**/*.so,**/*.exe,

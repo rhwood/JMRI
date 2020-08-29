@@ -3,6 +3,7 @@ jmri.jar
 /dist
 java/docs
 **/target
+**/temp
 
 # test artifacts
 junit-results.xml

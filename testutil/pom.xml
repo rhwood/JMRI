@@ -330,10 +330,10 @@
     </profiles>
 
     <build>
-        <sourceDirectory>../java/test/jmri</sourceDirectory>
+        <sourceDirectory>../jmri/src/test/java/jmri</sourceDirectory>
         <resources>
             <resource>
-                <directory>../java/src/jmri</directory>
+                <directory>../jmri/src/test/java/jmri</directory>
                 <filtering>false</filtering>
                 <includes>
                     <include>**</include>
@@ -352,7 +352,7 @@
         </resources>
         <testResources>
             <testResource>
-                <directory>../java/test/jmri</directory>
+                <directory>../jmri/src/test/java/jmri</directory>
                 <filtering>false</filtering>
                 <includes>
                     <include>**</include>
