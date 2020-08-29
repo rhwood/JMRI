@@ -33,7 +33,7 @@ public class XmlFileValidateRunnerTest {
             }
             @Override
             public void actionPerformed(ActionEvent e) {
-                 processFile(new File("java/test/jmri/configurexml/valid/RosterSchemaTest.xml"));   
+                 processFile(new File("jmri/src/test/java/jmri/configurexml/valid/RosterSchemaTest.xml"));   
             }
         };
         
@@ -58,7 +58,7 @@ public class XmlFileValidateRunnerTest {
             }
             @Override
             public void actionPerformed(ActionEvent e) {
-                 processFile(new File("java/test/jmri/configurexml/invalid/TurnoutDuplicateSystemName.xml"));   
+                 processFile(new File("jmri/src/test/java/jmri/configurexml/invalid/TurnoutDuplicateSystemName.xml"));   
             }
         };
         

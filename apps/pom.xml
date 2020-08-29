@@ -103,7 +103,7 @@
                                     <failOnViolation>true</failOnViolation>
                                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
                                     <sourceDirectories>
-                                        <sourceDirectory>${parent.basedir}/java/src/apps</sourceDirectory>
+                                        <sourceDirectory>${basedir}/src/main/java/</sourceDirectory>
                                     </sourceDirectories>
                                     <includes>**/*</includes>
                                     <excludes>**/*.jpg,**/*.PNG,**/*.jar,**/*.dll,**/*.dylib,**/*.so,**/*.exe,
@@ -290,11 +290,9 @@
     </profiles>
 
     <build>
-        <sourceDirectory>../java/src/apps</sourceDirectory>
-        <testSourceDirectory>../java/test/apps</testSourceDirectory>
         <resources>
             <resource>
-                <directory>../java/src</directory>
+                <directory>${basedir}/src/main/java</directory>
                 <filtering>false</filtering>
                 <includes>
                     <include>**</include>
@@ -313,7 +311,7 @@
         </resources>
         <testResources>
             <testResource>
-                <directory>../java/test/apps</directory>
+                <directory>${basedir}/src/test/java</directory>
                 <filtering>false</filtering>
                 <includes>
                     <include>**</include>
@@ -389,7 +387,7 @@
                     <systemPropertyVariables>
                         <jmri.path.program>${parent.basedir}</jmri.path.program>
                         <jmri.path.resources>${parent.basedir}/resources</jmri.path.resources>
-                        <jmri.prefsdir>${basedir}/temp</jmri.prefsdir>
+                        <jmri.prefsdir>${basedir}/target/temp</jmri.prefsdir>
                         <jmri.log4jconfigfilename>${basedir}/tests.lcf</jmri.log4jconfigfilename>
                         <jmri.shutdownmanager>jmri.util.MockShutDownManager</jmri.shutdownmanager>
                         <jinput.useDefaultPlugin>false</jinput.useDefaultPlugin><!-- don't load JInput during CI tests -->
