@@ -71,9 +71,9 @@ jobs:
   - name: Headless Tests
     os: linux
     env: HEADLESS=true STATIC=false
-  - name: Intermittently Failing GUI Tests
-    os: linux
-    env: HEADLESS=false SKIPINTERMITTENT=false STATIC=true
+#  - name: Intermittently Failing GUI Tests
+#    os: linux
+#    env: HEADLESS=false SKIPINTERMITTENT=false STATIC=true
 
 after_success:
   - if [[ "$TRAVIS_OS_NAME" == "linux" && "$HEADLESS" == "false" ]] ; then mvn jacoco:report coveralls:report -U -P travis-coverage ; fi
