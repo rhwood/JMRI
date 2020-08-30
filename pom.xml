@@ -168,7 +168,7 @@
                                     <failOnViolation>true</failOnViolation>
                                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
                                     <sourceDirectories>
-                                        <sourceDirectory>${basedir}</sourceDirectory>
+                                        <sourceDirectory>${basedir}/src</sourceDirectory>
                                     </sourceDirectories>
                                     <includes>**/*</includes>
                                     <excludes>**/*.jpg,**/*.PNG,**/*.jar,**/*.dll,**/*.dylib,**/*.so,**/*.exe,
