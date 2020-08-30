@@ -173,7 +173,7 @@
                             <source>1.8</source>
                             <target>1.8</target>
                             <compilerArgs>
-                                <properties>../${basedir}/java/ecj.warning.options-ci</properties>
+                                <properties>../java/ecj.warning.options-ci</properties>
                                 <arg>-sourcepath</arg>
                                 <arg>../${basedir}/java/src:../${basedir}/target/generated-sources</arg>
                             </compilerArgs>
