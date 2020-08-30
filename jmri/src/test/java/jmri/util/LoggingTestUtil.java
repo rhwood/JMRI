@@ -8,7 +8,6 @@ import java.util.*;
 
 import javax.annotation.Nonnull;
 
-import jmri.util.FileUtil;
 import jmri.util.exceptionhandler.UncaughtExceptionHandler;
 
 import org.apache.log4j.*;

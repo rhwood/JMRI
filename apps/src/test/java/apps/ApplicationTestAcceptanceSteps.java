@@ -15,7 +15,6 @@ import jmri.util.JmriJFrame;
 import jmri.util.MockShutDownManager;
 import jmri.util.JUnitAppender;
 import jmri.util.JUnitUtil;
-import apps.util.AppsUtil;
 import org.netbeans.jemmy.operators.JButtonOperator;
 import org.netbeans.jemmy.operators.JDialogOperator;
 
