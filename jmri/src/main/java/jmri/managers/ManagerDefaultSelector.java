@@ -416,6 +416,15 @@ public class ManagerDefaultSelector extends AbstractPreferencesManager {
             this.typeName = typeName;
             this.managerClass = managerClass;
         }
+
+        public String getTypeName(){
+            return typeName;
+        }
+
+        public Class<?> getManagerClass(){
+            return managerClass;
+        }
+
     }
 
     private String nameForClass(@Nonnull Class<?> cls) {
