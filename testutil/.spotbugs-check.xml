@@ -10,6 +10,13 @@
         <Or>
            <Bug pattern="SLF4J_FORMAT_SHOULD_BE_CONST" />
            <Bug pattern="SLF4J_PLACE_HOLDER_MISMATCH" />
+           <Bug pattern="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD" />
+           <Bug pattern="NP_NONNULL_PARAM_VIOLATION" />
+           <Bug pattern="NP_NONNULL_RETURN_VIOLATION" />
+           <Bug pattern="NP_METHOD_RETURN_RELAXING_ANNOTATION" />
+           <Bug pattern="CNT_ROUGH_CONSTANT_VALUE" />
+           <Bug pattern="IMSE_DONT_CATCH_IMSE" />
+           <Bug pattern="NM_VERY_CONFUSING" />
         </Or>
      </Match>
 
