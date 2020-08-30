@@ -202,7 +202,7 @@
                             </compilerArguments>
                             <compilerArgs>
                                 <arg>-sourcepath</arg>
-                                <arg>${project.basedir}/src/main/java/:${project.basedir}/target/generated-sources</arg>
+                                <arg>${project.basedir}/src/main/java/</arg>
                             </compilerArgs>
                         </configuration>
                         <dependencies>
