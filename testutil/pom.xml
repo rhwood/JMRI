@@ -51,7 +51,6 @@
         <surefire.version>2.22.0</surefire.version>
         <failsafe.version>2.22.0</failsafe.version>
         <jqassistant.version>1.6.0</jqassistant.version>
-        <checkstyle.config.location>../${basedir}/checkstyle.xml</checkstyle.config.location>
     </properties>
 
     <profiles>

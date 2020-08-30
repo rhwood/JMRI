@@ -18,7 +18,6 @@
         <jmri.path.program>${parent.basedir}</jmri.path.program>
         <jmri.prefsdir>${basedir}/temp</jmri.prefsdir>
         <jmri.shutdownmanager>jmri.util.MockShutDownManager</jmri.shutdownmanager>
-        <checkstyle.config.location>${parent.basedir}/checkstyle.xml</checkstyle.config.location>
     </properties>
 
     <profiles>

@@ -153,35 +153,6 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-checkstyle-plugin</artifactId>
-                        <version>3.1.0</version>
-                        <executions>
-                            <execution>
-                                <phase>test</phase>
-                                <goals>
-                                    <goal>check</goal>
-                                </goals>
-                                <configuration>
-                                    <!-- with exception of violationSeverity should match non-profiled checkstyle config and ant checkstyle config -->
-                                    <failOnViolation>true</failOnViolation>
-                                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                                    <sourceDirectories>
-                                        <sourceDirectory>${basedir}/src</sourceDirectory>
-                                    </sourceDirectories>
-                                    <includes>**/*</includes>
-                                    <excludes>**/*.jpg,**/*.PNG,**/*.jar,**/*.dll,**/*.dylib,**/*.so,**/*.exe,
-                                        **/*.zip,**/*.icns,**/*.bat,**/*.ttf,**/*.vsd,**/*.wav,**/*.spj,
-                                        **/*.pdf,.metadata/.plugins/org.eclipse.core.resources/**,
-                                        help/en/JavaHelpSearch/**,help/fr/JavaHelpSearch/**,
-                                        web/app/node_modules/**,.git/**,target/**</excludes>
-                                    <!-- only show errors, not warnings or infos -->
-                                    <violationSeverity>error</violationSeverity>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
                 </plugins>
             </build>
         </profile>
@@ -898,26 +869,6 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <configuration>
-                    <!-- with exception of violationSeverity should match travis-spotbugs profile checkstyle config and ant checkstyle config -->
-                    <failOnViolation>true</failOnViolation>
-                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                    <sourceDirectories>
-                        <sourceDirectory>${basedir}</sourceDirectory>
-                    </sourceDirectories>
-                    <includes>**/*</includes>
-                    <excludes>**/*.jpg,**/*.PNG,**/*.jar,**/*.dll,**/*.dylib,**/*.so,**/*.exe,
-                        **/*.zip,**/*.icns,**/*.bat,**/*.ttf,**/*.vsd,**/*.wav,**/*.spj,
-                        **/*.pdf,.metadata/.plugins/org.eclipse.core.resources/**,
-                        help/en/JavaHelpSearch/**,help/fr/JavaHelpSearch/**,
-                        web/app/node_modules/**,.git/**,target/**</excludes>
-                    <!-- show errors, warnings, and infos -->
-                    <violationSeverity>info</violationSeverity>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
@@ -1043,18 +994,6 @@
                     </executions>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>3.1.0</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>com.puppycrawl.tools</groupId>
-                            <artifactId>checkstyle</artifactId>
-                            <version>8.29</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-                <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>properties-maven-plugin</artifactId>
                     <version>1.0.0</version>
@@ -1111,11 +1050,6 @@
                         </reports>
                     </reportSet>
                 </reportSets>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.1.0</version>
             </plugin>
         </plugins>
     </reporting>
