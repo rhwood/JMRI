@@ -197,10 +197,12 @@
                             <compilerId>eclipse</compilerId>
                             <source>1.8</source>
                             <target>1.8</target>
+                            <compilerArguments>
+                                <properties>${project.basedir}/src/test/resources/ecj.warning.options-ci</properties>
+                            </compilerArguments>
                             <compilerArgs>
-                                <properties>${basedir}/java/ecj.warning.options-ci</properties>
                                 <arg>-sourcepath</arg>
-                                <arg>${basedir}/java/src:${basedir}/target/generated-sources</arg>
+                                <arg>${project.basedir}/src/main/java/:${project.basedir}/target/generated-sources</arg>
                             </compilerArgs>
                         </configuration>
                         <dependencies>
