@@ -14,43 +14,10 @@
     </parent>
 
     <properties>
-        <basedir>../</basedir>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <release.build_user>${user.name}</release.build_user>
-        <release.build_date>${maven.build.timestamp}</release.build_date>
-        <!-- it would be better to get current year from machine clock -->
-        <jmri.copyright.year>${project.inceptionYear}-${current.year}</jmri.copyright.year>
-        <!-- dependency versions (its easier to include version in dependency
-        but if multiple dependencies are linked, use a property for single
-        dependency source) -->
-        <cucumber.version>4.3.1</cucumber.version>
-        <jetty.version>9.4.28.v20200408</jetty.version>
-        <!-- this is a custom version, see lib/README.md -->
-        <jemmy.version>22-00c9f753cd0a</jemmy.version>
-        <slf4j.version>1.7.25</slf4j.version>
-        <jackson.version>2.10.0</jackson.version>
-        <jogamp.version>2.3.2</jogamp.version>
-        <openlcb.version>0.7.26</openlcb.version>
-        <netbeans.version>RELEASE113</netbeans.version>
-        <jacoco.version>0.8.5</jacoco.version>
-        <jacoco.reportDir>../${basedir}/target/</jacoco.reportDir>
         <!-- test environment -->
-        <jmri.path.program>../${basedir}</jmri.path.program>
-        <jmri.prefsdir>../${basedir}/temp</jmri.prefsdir>
+        <jmri.path.program>${parent.basedir}</jmri.path.program>
+        <jmri.prefsdir>${basedir}/temp</jmri.prefsdir>
         <jmri.shutdownmanager>jmri.util.MockShutDownManager</jmri.shutdownmanager>
-        <!-- don't load JInput during CI tests -->
-        <jinput.useDefaultPlugin>false</jinput.useDefaultPlugin>
-        <ant.version>1.10.7</ant.version>
-        <junit5.version>5.6.0</junit5.version>
-        <junit.platform.version>1.6.0</junit.platform.version>
-        <ant.jvm.args></ant.jvm.args>
-        <argLine>-Xmx1536m -Duser.language=en -Duser.region=US</argLine>
-        <!-- define argLines to allow running surefire:test -->
-        <surefire.argLine></surefire.argLine>
-        <failsafe.argLine></failsafe.argLine>
-        <surefire.version>2.22.0</surefire.version>
-        <failsafe.version>2.22.0</failsafe.version>
-        <jqassistant.version>1.6.0</jqassistant.version>
     </properties>
 
     <profiles>
@@ -797,26 +764,6 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <configuration>
-                    <!-- with exception of violationSeverity should match travis-spotbugs profile checkstyle config and ant checkstyle config -->
-                    <failOnViolation>true</failOnViolation>
-                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                    <sourceDirectories>
-                        <sourceDirectory>../${basedir}</sourceDirectory>
-                    </sourceDirectories>
-                    <includes>**/*</includes>
-                    <excludes>**/*.jpg,**/*.PNG,**/*.jar,**/*.dll,**/*.dylib,**/*.so,**/*.exe,
-                        **/*.zip,**/*.icns,**/*.bat,**/*.ttf,**/*.vsd,**/*.wav,**/*.spj,
-                        **/*.pdf,.metadata/.plugins/org.eclipse.core.resources/**,
-                        help/en/JavaHelpSearch/**,help/fr/JavaHelpSearch/**,
-                        web/app/node_modules/**,.git/**,target/**</excludes>
-                    <!-- show errors, warnings, and infos -->
-                    <violationSeverity>info</violationSeverity>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
@@ -923,18 +870,6 @@
                         </execution>
                     </executions>
                 </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>3.1.0</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>com.puppycrawl.tools</groupId>
-                            <artifactId>checkstyle</artifactId>
-                            <version>8.29</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -987,11 +922,6 @@
                         </reports>
                     </reportSet>
                 </reportSets>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.1.0</version>
             </plugin>
         </plugins>
     </reporting>
