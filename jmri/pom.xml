@@ -1391,7 +1391,7 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
-            <url>file://${basedir}../lib</url>
+            <url>file://${basedir}/../lib</url>
         </repository>
     </repositories>
 </project>
