@@ -12,10 +12,6 @@
         <name>Sample</name>
         <panel>jmri.util.swing.SamplePane</panel>
     </node>
-    <node>
-        <name>License</name>
-        <adapter>apps.LicenseAction</adapter>
-    </node>
 
 </nodes>
   
