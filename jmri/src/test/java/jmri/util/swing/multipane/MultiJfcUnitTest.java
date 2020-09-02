@@ -37,7 +37,7 @@ public class MultiJfcUnitTest {
         Assert.assertNotNull("found main frame", f1);
 
         // Load the license
-        JUnitUtil.pressButton(f1, "License");
+        //JUnitUtil.pressButton(f1, "License");
 
         // Find the button that opens a sample panel
         JButton samplebutton = JButtonOperator.findJButton(f1, "Sample", true, true);
