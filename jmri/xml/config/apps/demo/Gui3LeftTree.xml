@@ -11,13 +11,6 @@
   <name>My Layout</name>
     <name xml:lang="cs">Moje rozvržení</name>
 
-  <node><name>Preferences</name>
-        <name xml:lang="cs">Přednastavení</name>
-    <node><name>Tabbed Preferences</name>
-        <panel>apps.gui3.TabbedPreferences</panel>
-    </node>
-  </node>
-
   <node><name>Controls</name>
         <name xml:lang="cs">Ovládání</name>
     <node><name>Power Control</name>
