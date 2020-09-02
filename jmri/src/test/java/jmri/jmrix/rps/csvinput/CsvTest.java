@@ -19,13 +19,13 @@ public class CsvTest {
 
     @Test
     public void testCreateReader() throws java.io.IOException {
-        CSVParser parser = CSVParser.parse(new File("jmri/src/test/java/jmri/jmrix/rps/csvinput/testdata.csv"), StandardCharsets.UTF_8, CSVFormat.DEFAULT.withSkipHeaderRecord());
+        CSVParser parser = CSVParser.parse(new File("src/test/java/jmri/jmrix/rps/csvinput/testdata.csv"), StandardCharsets.UTF_8, CSVFormat.DEFAULT.withSkipHeaderRecord());
         Assert.assertNotNull("exists", parser);
     }
 
     @Test
     public void testReading() throws java.io.IOException {
-        CSVParser parser = CSVParser.parse(new File("jmri/src/test/java/jmri/jmrix/rps/csvinput/testdata.csv"), StandardCharsets.UTF_8, CSVFormat.DEFAULT);
+        CSVParser parser = CSVParser.parse(new File("src/test/java/jmri/jmrix/rps/csvinput/testdata.csv"), StandardCharsets.UTF_8, CSVFormat.DEFAULT);
         List<CSVRecord> records = parser.getRecords();
         Assert.assertEquals("2 lines", 2, records.size());
         

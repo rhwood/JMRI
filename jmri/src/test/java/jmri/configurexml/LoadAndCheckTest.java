@@ -31,7 +31,7 @@ public class LoadAndCheckTest {
     public void testLoadFileTest() throws Exception {
         // load file
         InstanceManager.getDefault(ConfigureManager.class)
-                .load(new File("jmri/src/test/java/jmri/configurexml/load/LoadFileTest.xml"));
+                .load(new File("src/test/java/jmri/configurexml/load/LoadFileTest.xml"));
 
         // check existence of a few objects
         Assert.assertNotNull(InstanceManager.sensorManagerInstance().getSensor("IS1"));
@@ -49,7 +49,7 @@ public class LoadAndCheckTest {
     public void testLoadMultipleSystems() throws Exception {
         // load file
         InstanceManager.getDefault(ConfigureManager.class)
-                .load(new File("jmri/src/test/java/jmri/configurexml/load/LoadMultipleSystems.xml"));
+                .load(new File("src/test/java/jmri/configurexml/load/LoadMultipleSystems.xml"));
 
         // check existence of a few objects
         Assert.assertNotNull(InstanceManager.sensorManagerInstance().getSensor("IS1"));
@@ -67,7 +67,7 @@ public class LoadAndCheckTest {
     public void testLoad295() throws Exception {
         // load file
         InstanceManager.getDefault(ConfigureManager.class)
-                .load(new java.io.File("jmri/src/test/java/jmri/configurexml/load/LoadFileTest295.xml"));
+                .load(new java.io.File("src/test/java/jmri/configurexml/load/LoadFileTest295.xml"));
 
         // check existence of a few objects
         Assert.assertNotNull(InstanceManager.sensorManagerInstance().getSensor("IS1"));

@@ -17,7 +17,7 @@ public class DispatcherTrainInfoFileTest {
     public void testFileRead() throws Exception {
 
         TrainInfoFile tif = new TrainInfoFile();
-        tif.setFileLocation("jmri/src/test/java/jmri/jmrit/dispatcher/traininfo/");
+        tif.setFileLocation("src/test/java/jmri/jmrit/dispatcher/traininfo/");
         TrainInfo ti = tif.readTrainInfo("TestTrain.xml");
         // test input information
         Assert.assertEquals("Transit Name", "Red Main Loop CW", ti.getTransitName());
@@ -58,7 +58,7 @@ public class DispatcherTrainInfoFileTest {
     public void testFileRead_V2() throws Exception {
 
         TrainInfoFile tif = new TrainInfoFile();
-        tif.setFileLocation("jmri/src/test/java/jmri/jmrit/dispatcher/traininfo/");
+        tif.setFileLocation("src/test/java/jmri/jmrit/dispatcher/traininfo/");
         TrainInfo ti = tif.readTrainInfo("TestTrainCW.xml");
         // test input information
         Assert.assertEquals("Transit Name", "SouthPlatform CW", ti.getTransitName());

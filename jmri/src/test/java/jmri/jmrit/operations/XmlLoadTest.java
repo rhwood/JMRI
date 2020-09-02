@@ -31,14 +31,14 @@ public class XmlLoadTest extends OperationsTestCase {
     // demo files.
     @Test
     public void testDemoLoad() {
-        runTest("jmri/src/test/java/jmri/jmrit/operations/xml/DemoFiles/", 12, 12, 10, 210, 19);
+        runTest("src/test/java/jmri/jmrit/operations/xml/DemoFiles/", 12, 12, 10, 210, 19);
     }
 
     // load a set of operations files with trains that have been built.
     // these are the demo files, but they were stored after building trains.
     @Test
     public void testDemoWithBuildLoad() {
-        runTest("jmri/src/test/java/jmri/jmrit/operations/xml/DemoFilesWithBuiltTrains/", 12, 12, 10, 210, 19);
+        runTest("src/test/java/jmri/jmrit/operations/xml/DemoFilesWithBuiltTrains/", 12, 12, 10, 210, 19);
     }
 
     /*

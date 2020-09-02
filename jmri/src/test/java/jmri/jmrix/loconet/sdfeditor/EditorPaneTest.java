@@ -20,7 +20,7 @@ public class EditorPaneTest {
     @Test
     public void testShowPane() throws java.io.IOException {
         Assume.assumeFalse(GraphicsEnvironment.isHeadless());
-        SdfBuffer buff = new SdfBuffer("jmri/src/test/java/jmri/jmrix/loconet/sdf/test2.sdf");
+        SdfBuffer buff = new SdfBuffer("src/test/java/jmri/jmrix/loconet/sdf/test2.sdf");
         Assert.assertNotNull(buff);
         EditorFrame f = new EditorFrame(buff);
         f.setVisible(true);

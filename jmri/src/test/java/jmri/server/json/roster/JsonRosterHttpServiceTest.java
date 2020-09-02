@@ -37,7 +37,7 @@ public class JsonRosterHttpServiceTest extends JsonHttpServiceTestBase<JsonRoste
         JUnitUtil.initConfigureManager();
         JUnitUtil.initRosterConfigManager();
         InstanceManager.getDefault(RosterConfigManager.class).setRoster(ProfileManager.getDefault().getActiveProfile(),
-                new Roster("jmri/src/test/java/jmri/server/json/roster/data/roster.xml"));
+                new Roster("src/test/java/jmri/server/json/roster/data/roster.xml"));
     }
 
     @AfterEach

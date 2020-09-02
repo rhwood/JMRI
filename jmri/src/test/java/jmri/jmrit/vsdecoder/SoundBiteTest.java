@@ -33,7 +33,7 @@ public class SoundBiteTest {
         Assert.assertFalse("is playing", uut.isPlaying());
     }
 
-    String filename = "jmri/src/test/java/jmri/jmrit/vsdecoder/test.wav";
+    String filename = "src/test/java/jmri/jmrit/vsdecoder/test.wav";
 
     @Test
     public void testCreateFull() {

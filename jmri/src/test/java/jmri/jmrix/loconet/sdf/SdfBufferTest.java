@@ -21,14 +21,14 @@ public class SdfBufferTest {
 
     @Test
     public void testFileCtor() throws java.io.IOException {
-        SdfBuffer b = new SdfBuffer("jmri/src/test/java/jmri/jmrix/loconet/sdf/test2.sdf");
+        SdfBuffer b = new SdfBuffer("src/test/java/jmri/jmrix/loconet/sdf/test2.sdf");
 
         String result = b.toString();
 
         // read the golden file
         String g = "";
         try {
-            BufferedReader in = new BufferedReader(new FileReader("jmri/src/test/java/jmri/jmrix/loconet/sdf/test2.golden.txt"));
+            BufferedReader in = new BufferedReader(new FileReader("src/test/java/jmri/jmrix/loconet/sdf/test2.golden.txt"));
             String str;
             while ((str = in.readLine()) != null) {
                 g += (str + "\n");
@@ -53,11 +53,11 @@ public class SdfBufferTest {
     @Test
     public void testModify() throws java.io.IOException {
         // get original file
-        SdfBuffer original = new SdfBuffer("jmri/src/test/java/jmri/jmrix/loconet/sdf/test2.sdf");
+        SdfBuffer original = new SdfBuffer("src/test/java/jmri/jmrix/loconet/sdf/test2.sdf");
         byte[] oarray = original.getByteArray();
 
         // and a version to modify
-        SdfBuffer b = new SdfBuffer("jmri/src/test/java/jmri/jmrix/loconet/sdf/test2.sdf");
+        SdfBuffer b = new SdfBuffer("src/test/java/jmri/jmrix/loconet/sdf/test2.sdf");
         Assert.assertEquals("original lengths", oarray.length, b.getByteArray().length);
 
         // modify the 1st SDF     

@@ -29,7 +29,7 @@ public class LogixSystemTest {
     public void testLogixReferenceSetup() throws jmri.JmriException {        
 
         // load and activate sample file
-        java.io.File f = new java.io.File("jmri/src/test/java/jmri/managers/LogixSystemTestConditionaReferenceCheck.xml");
+        java.io.File f = new java.io.File("src/test/java/jmri/managers/LogixSystemTestConditionaReferenceCheck.xml");
         jmri.configurexml.ConfigXmlManager cm = new jmri.configurexml.ConfigXmlManager() {};
         cm.load(f);
         InstanceManager.getDefault(jmri.LogixManager.class).activateAllLogixs();

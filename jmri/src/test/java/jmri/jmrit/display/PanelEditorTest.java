@@ -21,7 +21,7 @@ public class PanelEditorTest {
     public void testShow() throws Exception {
         Assume.assumeFalse(GraphicsEnvironment.isHeadless());
         // load and display
-        File f = new File("jmri/src/test/java/jmri/jmrit/display/valid/PanelEditorTest1.xml");
+        File f = new File("src/test/java/jmri/jmrit/display/valid/PanelEditorTest1.xml");
         InstanceManager.getDefault(ConfigureManager.class).load(f);
     }
 
@@ -29,7 +29,7 @@ public class PanelEditorTest {
     public void testShow2() throws Exception {
         Assume.assumeFalse(GraphicsEnvironment.isHeadless());
         // load and display
-        File f = new File("jmri/src/test/java/jmri/jmrit/display/configurexml/load/OneOfEach.xml");
+        File f = new File("src/test/java/jmri/jmrit/display/configurexml/load/OneOfEach.xml");
         InstanceManager.getDefault(ConfigureManager.class).load(f);
 
     }
@@ -38,7 +38,7 @@ public class PanelEditorTest {
     public void testShow3() throws Exception {
         Assume.assumeFalse(GraphicsEnvironment.isHeadless());
         // load and display
-        File f = new File("jmri/src/test/java/jmri/jmrit/display/configurexml/load/OneOfEach.3.3.3.xml");
+        File f = new File("src/test/java/jmri/jmrit/display/configurexml/load/OneOfEach.3.3.3.xml");
         InstanceManager.getDefault(ConfigureManager.class).load(f);
 
     }

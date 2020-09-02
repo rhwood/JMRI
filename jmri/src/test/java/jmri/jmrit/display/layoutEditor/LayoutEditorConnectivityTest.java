@@ -29,7 +29,7 @@ public class LayoutEditorConnectivityTest {
         Assume.assumeFalse(GraphicsEnvironment.isHeadless());
 
         // load and display test panel file
-        java.io.File f = new java.io.File("jmri/src/test/java/jmri/jmrit/display/layoutEditor/valid/LEConnectTest.xml");
+        java.io.File f = new java.io.File("src/test/java/jmri/jmrit/display/layoutEditor/valid/LEConnectTest.xml");
         cm.load(f);
 
         // Find new window by name (should be more distinctive, comes from sample file)

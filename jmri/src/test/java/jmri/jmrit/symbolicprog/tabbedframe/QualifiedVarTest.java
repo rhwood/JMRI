@@ -56,7 +56,7 @@ public class QualifiedVarTest {
                 try {
                     jmri.jmrit.XmlFile file = new jmri.jmrit.XmlFile() {
                     };
-                    org.jdom2.Element el = file.rootFromFile(new java.io.File("jmri/src/test/java/jmri/jmrit/symbolicprog/tabbedframe/pass/DecoderWithQualifier.xml"));
+                    org.jdom2.Element el = file.rootFromFile(new java.io.File("src/test/java/jmri/jmrit/symbolicprog/tabbedframe/pass/DecoderWithQualifier.xml"));
 
                     DecoderFile df = new DecoderFile();  // used as a temporary
                     df.loadVariableModel(el.getChild("decoder"), p.variableModel);

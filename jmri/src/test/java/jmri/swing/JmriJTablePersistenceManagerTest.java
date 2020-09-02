@@ -366,7 +366,7 @@ public class JmriJTablePersistenceManagerTest {
         Profile profile = ProfileManager.getDefault().getActiveProfile();
         Assert.assertNotNull(profile); // test requires non-null profile
         // copy preferences into profile
-        File source = new File("jmri/src/test/java/jmri/swing/JmriJTablePersistenceManagerTest-user-interface.xml");
+        File source = new File("src/test/java/jmri/swing/JmriJTablePersistenceManagerTest-user-interface.xml");
         File target = new File(new File(new File(profile.getPath(), Profile.PROFILE), NodeIdentity.storageIdentity()), Profile.UI_CONFIG);
         FileUtil.createDirectory(target.getParentFile());
         FileUtil.copy(source, target);

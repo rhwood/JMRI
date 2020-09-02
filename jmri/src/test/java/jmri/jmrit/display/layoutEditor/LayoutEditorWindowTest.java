@@ -24,7 +24,7 @@ public class LayoutEditorWindowTest {
         Assume.assumeFalse(GraphicsEnvironment.isHeadless());
 
         // load and display sample file
-        java.io.File f = new java.io.File("jmri/src/test/java/jmri/jmrit/display/layoutEditor/valid/SimpleLayoutEditorTest.xml");
+        java.io.File f = new java.io.File("src/test/java/jmri/jmrit/display/layoutEditor/valid/SimpleLayoutEditorTest.xml");
         cm.load(f);
 
         // Find new window by name (should be more distinctive, comes from sample file)

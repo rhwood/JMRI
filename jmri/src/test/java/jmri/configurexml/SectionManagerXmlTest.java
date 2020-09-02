@@ -37,7 +37,7 @@ public class SectionManagerXmlTest {
         JUnitUtil.initLayoutBlockManager();
         JUnitUtil.initSectionManager();
         InstanceManager.getDefault(ConfigureManager.class)
-                .load(new java.io.File("jmri/src/test/java/jmri/configurexml/load/SectionManagerXmlTest.xml"));
+                .load(new java.io.File("src/test/java/jmri/configurexml/load/SectionManagerXmlTest.xml"));
 
         // Note: This test assumes that BlockManagerXMLTest passes and more importantly (weakly)
         //       that LoadSectionManagerFileText.xml and LoadBlockManagerFileText.xml refer to the

@@ -22,7 +22,7 @@ public class SpjFileTest {
 
     void loadFile() throws java.io.IOException {
         if (testFile == null) {
-            testFile = new SpjFile(new java.io.File("jmri/src/test/java/jmri/jmrix/loconet/spjfile/test.spj"));
+            testFile = new SpjFile(new java.io.File("src/test/java/jmri/jmrix/loconet/spjfile/test.spj"));
             testFile.read();
         }
     }

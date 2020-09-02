@@ -37,7 +37,7 @@ public class CbusEventTableXmlActionTest {
         
         CbusEventTableXmlFile x = new CbusEventTableXmlFile();
 
-        java.io.File dir = new java.io.File("jmri/src/test/java/jmri/jmrix/can/cbus/eventtable/");
+        java.io.File dir = new java.io.File("src/test/java/jmri/jmrix/can/cbus/eventtable/");
         java.io.File systemFile = new java.io.File(dir, "EventTableData-1.xml");
 
         java.nio.file.Files.copy(systemFile.toPath(), x.getFile(true).toPath(), 
@@ -88,7 +88,7 @@ public class CbusEventTableXmlActionTest {
         
         CbusEventTableXmlFile x = new CbusEventTableXmlFile();
 
-        java.io.File dir = new java.io.File("jmri/src/test/java/jmri/jmrix/can/cbus/eventtable/");
+        java.io.File dir = new java.io.File("src/test/java/jmri/jmrix/can/cbus/eventtable/");
         java.io.File systemFile = new java.io.File(dir, "EventTableData-2.xml");
 
         java.nio.file.Files.copy(systemFile.toPath(), x.getFile(true).toPath(), 

@@ -97,7 +97,7 @@ public class PositionableLabelTest extends PositionableTestBase {
 
         // make four windows
         InstanceManager.getDefault(ConfigureManager.class)
-                .load(new File("jmri/src/test/java/jmri/jmrit/display/configurexml/valid/backgrounds.xml"));
+                .load(new File("src/test/java/jmri/jmrit/display/configurexml/valid/backgrounds.xml"));
         new QueueTool().waitEmpty(100);
 
         // Find color in label by frame name

@@ -40,7 +40,7 @@ public class ConsistFileTest {
     public void testReadFile() throws java.io.IOException, org.jdom2.JDOMException {
         ConsistFile file = new ConsistFile();
         InstanceManager.getDefault(ConsistManager.class);
-        file.readFile("jmri/src/test/java/jmri/jmrit/consisttool/consist.xml");
+        file.readFile("src/test/java/jmri/jmrit/consisttool/consist.xml");
     }
 
     @Test

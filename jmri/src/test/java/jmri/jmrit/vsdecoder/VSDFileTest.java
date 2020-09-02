@@ -19,7 +19,7 @@ public class VSDFileTest {
         Assert.assertThrows(IOException.class, () -> new VSDFile("test"));
     }
 
-    String filename = "jmri/src/test/java/jmri/jmrit/vsdecoder/steam1min8.zip";
+    String filename = "src/test/java/jmri/jmrit/vsdecoder/steam1min8.zip";
 
     @Test
     public void testCTor() throws IOException {

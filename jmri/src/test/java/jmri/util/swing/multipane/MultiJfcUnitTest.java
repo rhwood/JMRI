@@ -27,9 +27,9 @@ public class MultiJfcUnitTest {
         Assume.assumeFalse(GraphicsEnvironment.isHeadless());
         // show the window
         JFrame f1 = new MultiPaneWindow("test",
-                "jmri/src/test/java/jmri/util/swing/xml/Gui3LeftTree.xml",
-                "jmri/src/test/java/jmri/util/swing/xml/Gui3Menus.xml",
-                "jmri/src/test/java/jmri/util/swing/xml/Gui3MainToolBar.xml"
+                "src/test/java/jmri/util/swing/xml/Gui3LeftTree.xml",
+                "src/test/java/jmri/util/swing/xml/Gui3Menus.xml",
+                "src/test/java/jmri/util/swing/xml/Gui3MainToolBar.xml"
         );
         f1.setSize(new java.awt.Dimension(500, 500));
         f1.setVisible(true);

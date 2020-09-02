@@ -36,7 +36,7 @@ public class ActiveLogixTest {
         //                          new jmri.implementation.SignalSpeedMap());
 
         // load and activate sample file
-        java.io.File f = new java.io.File("jmri/src/test/java/jmri/implementation/configurexml/load/ActiveLogixTestDefinitions.xml");
+        java.io.File f = new java.io.File("src/test/java/jmri/implementation/configurexml/load/ActiveLogixTestDefinitions.xml");
         jmri.configurexml.ConfigXmlManager cm = new jmri.configurexml.ConfigXmlManager() {};
         cm.load(f);
         InstanceManager.getDefault(jmri.LogixManager.class).activateAllLogixs();

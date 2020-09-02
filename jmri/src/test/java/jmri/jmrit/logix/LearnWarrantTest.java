@@ -39,7 +39,7 @@ public class LearnWarrantTest {
         WarrantPreferences.getDefault().setShutdown(WarrantPreferences.Shutdown.NO_MERGE);
 
         // load and display
-        File f = new File("jmri/src/test/java/jmri/jmrit/logix/valid/LearnWarrantTest.xml");
+        File f = new File("src/test/java/jmri/jmrit/logix/valid/LearnWarrantTest.xml");
         /* This layout designed so that the block and path will define a unique
          * route from origin to destination.  i.e. the review and select route
          * never needs to be displayed.  All possible EastBound Routes:

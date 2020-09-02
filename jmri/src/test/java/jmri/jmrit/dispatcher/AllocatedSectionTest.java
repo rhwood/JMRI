@@ -19,7 +19,7 @@ public class AllocatedSectionTest {
     @Test
     public void testCTor() {
         Assume.assumeFalse(GraphicsEnvironment.isHeadless());
-        OptionsFile.setDefaultFileName("jmri/src/test/java/jmri/jmrit/dispatcher/dispatcheroptions.xml");  // exist?
+        OptionsFile.setDefaultFileName("src/test/java/jmri/jmrit/dispatcher/dispatcheroptions.xml");  // exist?
         DispatcherFrame d = InstanceManager.getDefault(DispatcherFrame.class);
         jmri.Transit transit = new jmri.Transit("TT1");
         ActiveTrain at = new ActiveTrain(transit, "Train", ActiveTrain.USER);

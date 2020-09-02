@@ -19,7 +19,7 @@ public class AllocationPlanTest {
     @Test
     public void testCTor() {
         Assume.assumeFalse(GraphicsEnvironment.isHeadless());
-        OptionsFile.setDefaultFileName("jmri/src/test/java/jmri/jmrit/dispatcher/dispatcheroptions.xml");  // exist?
+        OptionsFile.setDefaultFileName("src/test/java/jmri/jmrit/dispatcher/dispatcheroptions.xml");  // exist?
 
         DispatcherFrame d = InstanceManager.getDefault(DispatcherFrame.class);
         AutoAllocate aa = new AutoAllocate(d);

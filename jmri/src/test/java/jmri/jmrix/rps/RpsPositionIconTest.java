@@ -31,7 +31,7 @@ public class RpsPositionIconTest {
             }
         }.reset();
 
-        new ConfigXmlManager().load(new File("jmri/src/test/java/jmri/jmrix/rps/LocationTestPanel.xml"));
+        new ConfigXmlManager().load(new File("src/test/java/jmri/jmrix/rps/LocationTestPanel.xml"));
 
         // and push a good measurement
         Reading loco = new Reading("27", null);

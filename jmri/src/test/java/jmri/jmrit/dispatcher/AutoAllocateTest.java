@@ -21,7 +21,7 @@ public class AutoAllocateTest {
     public void testCTor() {
         Assume.assumeFalse("Ignoring intermittent test", Boolean.getBoolean("jmri.skipTestsRequiringSeparateRunning"));
         Assume.assumeFalse(GraphicsEnvironment.isHeadless());
-        OptionsFile.setDefaultFileName("jmri/src/test/java/jmri/jmrit/dispatcher/dispatcheroptions.xml");  // exist?
+        OptionsFile.setDefaultFileName("src/test/java/jmri/jmrit/dispatcher/dispatcheroptions.xml");  // exist?
 
         DispatcherFrame d = InstanceManager.getDefault(DispatcherFrame.class);
         AutoAllocate t = new AutoAllocate(d);

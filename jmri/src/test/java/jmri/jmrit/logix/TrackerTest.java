@@ -57,7 +57,7 @@ public class TrackerTest {
         WarrantPreferences.getDefault().setShutdown(WarrantPreferences.Shutdown.NO_MERGE);
 
         // load and display
-        File f = new File("jmri/src/test/java/jmri/jmrit/logix/valid/IndicatorDemoTest.xml");
+        File f = new File("src/test/java/jmri/jmrit/logix/valid/IndicatorDemoTest.xml");
         InstanceManager.getDefault(ConfigureManager.class).load(f);
         TrackerTableAction tta = jmri.InstanceManager.getDefault(TrackerTableAction.class);
         assertThat(tta).withFailMessage("TrackerTableAction not found").isNotNull();

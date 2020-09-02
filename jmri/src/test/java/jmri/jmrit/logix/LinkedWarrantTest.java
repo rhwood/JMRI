@@ -36,7 +36,7 @@ public class LinkedWarrantTest {
     @Test
     public void testLoopedWarrant() throws Exception {
         // load and display
-        File f = new File("jmri/src/test/java/jmri/jmrit/logix/valid/ShortBlocksTest.xml");
+        File f = new File("src/test/java/jmri/jmrit/logix/valid/ShortBlocksTest.xml");
         InstanceManager.getDefault(ConfigureManager.class).load(f);
         WarrantPreferences.getDefault().setShutdown(WarrantPreferences.Shutdown.NO_MERGE);
 
@@ -104,7 +104,7 @@ public class LinkedWarrantTest {
     @Test
     public void testLinkedWarrant() throws Exception {
         // load and display
-        File f = new File("jmri/src/test/java/jmri/jmrit/logix/valid/ShortBlocksTest.xml");
+        File f = new File("src/test/java/jmri/jmrit/logix/valid/ShortBlocksTest.xml");
         InstanceManager.getDefault(ConfigureManager.class).load(f);
         WarrantPreferences.getDefault().setShutdown(WarrantPreferences.Shutdown.NO_MERGE);
 
@@ -174,7 +174,7 @@ public class LinkedWarrantTest {
     @Test
     public void testBackAndForth() throws Exception {
         // load and display
-        File f = new File("jmri/src/test/java/jmri/jmrit/logix/valid/ShortBlocksTest.xml");
+        File f = new File("src/test/java/jmri/jmrit/logix/valid/ShortBlocksTest.xml");
         InstanceManager.getDefault(ConfigureManager.class).load(f);
         WarrantPreferences.getDefault().setShutdown(WarrantPreferences.Shutdown.NO_MERGE);
 
@@ -258,7 +258,7 @@ public class LinkedWarrantTest {
     @Test
     public void testLinkedMidScript() throws Exception {
         // load and display
-        File f = new File("jmri/src/test/java/jmri/jmrit/logix/valid/NXWarrantTest.xml");
+        File f = new File("src/test/java/jmri/jmrit/logix/valid/NXWarrantTest.xml");
         InstanceManager.getDefault(ConfigureManager.class).load(f);
         WarrantPreferences.getDefault().setShutdown(WarrantPreferences.Shutdown.NO_MERGE);
 

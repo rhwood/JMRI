@@ -33,7 +33,7 @@ public class XmlFileValidateActionTest {
             }
             @Override
             public void actionPerformed(ActionEvent e) {
-                 processFile(new File("jmri/src/test/java/jmri/configurexml/valid/RosterSchemaTest.xml"));   
+                 processFile(new File("src/test/java/jmri/configurexml/valid/RosterSchemaTest.xml"));   
             }
         };
         
@@ -43,7 +43,7 @@ public class XmlFileValidateActionTest {
         Assert.assertFalse(fail);
     }
 
-    // should find a "Duplicate key value [LT1] declared" error on or about line 14 of jmri/src/test/java/jmri/configurexml/invalid/TurnoutDuplicateSystemName.xml
+    // should find a "Duplicate key value [LT1] declared" error on or about line 14 of src/test/java/jmri/configurexml/invalid/TurnoutDuplicateSystemName.xml
     @Test
     public void testFileFails() {
         XmlFileValidateAction t = new XmlFileValidateAction() {
@@ -58,7 +58,7 @@ public class XmlFileValidateActionTest {
             }
             @Override
             public void actionPerformed(ActionEvent e) {
-                 processFile(new File("jmri/src/test/java/jmri/configurexml/invalid/TurnoutDuplicateSystemName.xml"));   
+                 processFile(new File("src/test/java/jmri/configurexml/invalid/TurnoutDuplicateSystemName.xml"));   
             }
         };
         

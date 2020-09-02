@@ -75,7 +75,7 @@ public class NXFrameTest {
     @DisabledIfSystemProperty(named ="jmri.skipTestsRequiringSeparateRunning", matches ="true")
     public void testNXWarrantSetup() throws Exception {
         // load and display
-        File f = new File("jmri/src/test/java/jmri/jmrit/logix/valid/NXWarrantTest.xml");
+        File f = new File("src/test/java/jmri/jmrit/logix/valid/NXWarrantTest.xml");
         InstanceManager.getDefault(ConfigureManager.class).load(f);
         WarrantPreferences.getDefault().setShutdown(WarrantPreferences.Shutdown.NO_MERGE);
 
@@ -143,7 +143,7 @@ public class NXFrameTest {
         // it is the WarrantTableframe portion of this test that hangs.
 
         // load and display
-        File f = new File("jmri/src/test/java/jmri/jmrit/logix/valid/NXWarrantTest.xml");
+        File f = new File("src/test/java/jmri/jmrit/logix/valid/NXWarrantTest.xml");
         InstanceManager.getDefault(ConfigureManager.class).load(f);
         WarrantPreferences.getDefault().setShutdown(WarrantPreferences.Shutdown.NO_MERGE);
 
@@ -259,7 +259,7 @@ public class NXFrameTest {
     @DisabledIfSystemProperty(named ="jmri.skipTestsRequiringSeparateRunning", matches ="true")
     public void testWarrantLoopRun() throws Exception {
         // load and display
-        File f = new File("jmri/src/test/java/jmri/jmrit/logix/valid/NXWarrantTest.xml");
+        File f = new File("src/test/java/jmri/jmrit/logix/valid/NXWarrantTest.xml");
         InstanceManager.getDefault(ConfigureManager.class).load(f);
         WarrantPreferences.getDefault().setShutdown(WarrantPreferences.Shutdown.NO_MERGE);
 
@@ -302,7 +302,7 @@ public class NXFrameTest {
     @DisabledIfSystemProperty(named ="jmri.skipTestsRequiringSeparateRunning", matches ="true")
     public void testWarrantRampHalt() throws Exception {
         // load and display
-        File f = new File("jmri/src/test/java/jmri/jmrit/logix/valid/NXWarrantTest.xml");
+        File f = new File("src/test/java/jmri/jmrit/logix/valid/NXWarrantTest.xml");
         InstanceManager.getDefault(ConfigureManager.class).load(f);
         WarrantPreferences.getDefault().setShutdown(WarrantPreferences.Shutdown.NO_MERGE);
 

@@ -10,12 +10,12 @@ Scenario Outline: Web Table requests
    @firefox 
    Examples: Firefox Table Tests
    | browser | panel | table | item | column | state |
-   | firefox | jmri/src/test/java/jmri/jmrit/display/configurexml/load/OneOfEach.xml | Turnouts | IT0 | state |closed |
-   | firefox | jmri/src/test/java/jmri/jmrit/display/configurexml/load/OneOfEach.xml | Turnouts | IT1 | state |unknown |
+   | firefox | src/test/java/jmri/jmrit/display/configurexml/load/OneOfEach.xml | Turnouts | IT0 | state |closed |
+   | firefox | src/test/java/jmri/jmrit/display/configurexml/load/OneOfEach.xml | Turnouts | IT1 | state |unknown |
 
    @chrome
    Examples: Chrome TableTests
    | browser | panel | table | item | column | state |
-   | chrome| jmri/src/test/java/jmri/jmrit/display/configurexml/load/OneOfEach.xml | Turnouts | IT0 | state |closed |
-   | chrome | jmri/src/test/java/jmri/jmrit/display/configurexml/load/OneOfEach.xml | Turnouts | IT1 | state |unknown |
+   | chrome| src/test/java/jmri/jmrit/display/configurexml/load/OneOfEach.xml | Turnouts | IT0 | state |closed |
+   | chrome | src/test/java/jmri/jmrit/display/configurexml/load/OneOfEach.xml | Turnouts | IT1 | state |unknown |
 

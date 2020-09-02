@@ -119,7 +119,7 @@ public class RosterEntryTest {
         
         // Create a RosterEntry from a test xml file
         // This one references the Schema version
-        RosterEntry r = RosterEntry.fromFile(new File("jmri/src/test/java/jmri/jmrit/roster/ACL1012-Schema.xml"));
+        RosterEntry r = RosterEntry.fromFile(new File("src/test/java/jmri/jmrit/roster/ACL1012-Schema.xml"));
 
         // check for various values
         Assert.assertEquals("file name ", "ACL1012-Schema.xml", r.getFileName());
@@ -136,7 +136,7 @@ public class RosterEntryTest {
         // Create a RosterEntry from a test xml file
         // This one references the DTD to make sure that still works
         // post migration
-        RosterEntry r = RosterEntry.fromFile(new File("jmri/src/test/java/jmri/jmrit/roster/ACL1012-DTD.xml"));
+        RosterEntry r = RosterEntry.fromFile(new File("src/test/java/jmri/jmrit/roster/ACL1012-DTD.xml"));
 
         // check for various values
         Assert.assertEquals("file name ", "ACL1012-DTD.xml", r.getFileName());

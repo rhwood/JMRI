@@ -31,7 +31,7 @@ import org.openlcb.*;
 public class LoadAndStoreTest extends LoadAndStoreTestBase {
 
     public static Stream<Arguments> data() {
-        return getFiles(new File("jmri/src/test/java/jmri/jmrix/openlcb/configurexml"), false, true);
+        return getFiles(new File("src/test/java/jmri/jmrix/openlcb/configurexml"), false, true);
     }
 
     @ParameterizedTest(name = "{index}: {0} (pass={1})")

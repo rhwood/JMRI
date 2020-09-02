@@ -60,7 +60,7 @@ public class JmriScriptEngineManagerTest {
         TurnoutManager manager = InstanceManager.getDefault(TurnoutManager.class);
         assertNull(result);
         assertNull(manager.getBySystemName("IT1"));
-        result = jsem.eval(FileUtil.getFile("program:jmri/src/test/java/jmri/script/exec-file-profile/turnout.py"));
+        result = jsem.eval(FileUtil.getFile("program:src/test/java/jmri/script/exec-file-profile/turnout.py"));
         assertNotNull(result);
         assertNotNull(manager.getBySystemName("IT1"));
         assertEquals(InstanceManager.getDefault(TurnoutManager.class).getBySystemName("IT1"), result);
@@ -78,7 +78,7 @@ public class JmriScriptEngineManagerTest {
         Object result = null;
         ProfileManager manager = ProfileManager.getDefault();
         assertNull(result);
-        result = jsem.eval(FileUtil.getFile("program:jmri/src/test/java/jmri/script/exec-file-profile/profile.py"), bindings);
+        result = jsem.eval(FileUtil.getFile("program:src/test/java/jmri/script/exec-file-profile/profile.py"), bindings);
         assertNotNull(result);
         assertEquals(Integer.valueOf(manager.getAutoStartActiveProfileTimeout()), result);
     }
@@ -86,7 +86,7 @@ public class JmriScriptEngineManagerTest {
     @Test
     public void testEval_File_Imports() throws IOException, ScriptException {
         Memory result = InstanceManager.getDefault(MemoryManager.class).provide("result");
-        jsem.eval(FileUtil.getFile("program:jmri/src/test/java/jmri/script/import/imports.py"));
+        jsem.eval(FileUtil.getFile("program:src/test/java/jmri/script/import/imports.py"));
         assertEquals("foo", result.getValue());
     }
 
@@ -110,7 +110,7 @@ public class JmriScriptEngineManagerTest {
     @Test
     public void testInitializePythonWithJython() throws IOException {
         // use profile that sets jython.exec=true
-        JUnitUtil.resetProfileManager(new NullProfile(new File("jmri/src/test/java/jmri/script/jython-exec-profile")));
+        JUnitUtil.resetProfileManager(new NullProfile(new File("src/test/java/jmri/script/jython-exec-profile")));
         jsem.initializePython();
         PythonInterpreter pi = jsem.getPythonInterpreter();
         assertNotNull("got non-engine python", pi);

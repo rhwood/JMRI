@@ -12,7 +12,7 @@ class EntryExitTestTools {
     static HashMap<String, LayoutEditor> getPanels() throws Exception {
         HashMap<String, LayoutEditor> panels = new HashMap<>();
         jmri.configurexml.ConfigXmlManager cm = new jmri.configurexml.ConfigXmlManager();
-        java.io.File f = new java.io.File("jmri/src/test/java/jmri/jmrit/entryexit/load/EntryExitTest.xml");
+        java.io.File f = new java.io.File("src/test/java/jmri/jmrit/entryexit/load/EntryExitTest.xml");
         cm.load(f);
 
         for (LayoutEditor panel : InstanceManager.getDefault(EditorManager.class).getAll(LayoutEditor.class)) {

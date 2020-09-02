@@ -33,12 +33,12 @@ public class SignalSystemTestUtil {
         try {
             FileUtil.createDirectory(dummy);
             {
-                Path inPath = new File(new File(FileUtil.getProgramPath(), "jmri/src/test/java/jmri/implementation"), "testAspects.xml").toPath();
+                Path inPath = new File(new File(FileUtil.getProgramPath(), "src/test/java/jmri/implementation"), "testAspects.xml").toPath();
                 Path outPath = new File(dummy, "aspects.xml").toPath();
                 Files.copy(inPath, outPath, StandardCopyOption.REPLACE_EXISTING);
             }
             {
-                Path inPath = new File(new File(FileUtil.getProgramPath(), "jmri/src/test/java/jmri/implementation"), "test-appearance-one-searchlight.xml").toPath();
+                Path inPath = new File(new File(FileUtil.getProgramPath(), "src/test/java/jmri/implementation"), "test-appearance-one-searchlight.xml").toPath();
                 Path outPath = new File(dummy, "appearance-one-searchlight.xml").toPath();
                 Files.copy(inPath, outPath, StandardCopyOption.REPLACE_EXISTING);
             }

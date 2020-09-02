@@ -29,7 +29,7 @@ public class OptionsFileTest {
         // options file by creating a DispatcherFrame object.  A future 
         // enhancement shold probably break this coupling.
         Assume.assumeFalse(GraphicsEnvironment.isHeadless());
-        OptionsFile.setDefaultFileName("jmri/src/test/java/jmri/jmrit/dispatcher/dispatcheroptions.xml");  // exist?
+        OptionsFile.setDefaultFileName("src/test/java/jmri/jmrit/dispatcher/dispatcheroptions.xml");  // exist?
 
         DispatcherFrame d = InstanceManager.getDefault(DispatcherFrame.class);
 

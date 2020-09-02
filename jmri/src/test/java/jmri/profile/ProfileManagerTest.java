@@ -62,7 +62,7 @@ public class ProfileManagerTest {
         newFolder.mkdir();
         folderName = newFolder.getAbsolutePath();
         File profileFolder = new File(folderName);
-        FileUtil.copy(new File("jmri/src/test/java/jmri/profile/samples/ln-simulator"), profileFolder); // where is existing profile?
+        FileUtil.copy(new File("src/test/java/jmri/profile/samples/ln-simulator"), profileFolder); // where is existing profile?
         pm.setActiveProfile(folderName);
         Profile p = new Profile(profileFolder);
         Assert.assertNotNull(pm.getActiveProfile());

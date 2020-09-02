@@ -32,7 +32,7 @@ public class I18NTest {
     /* Referenced in disabled test above 
      private Map<String, Integer> getUnfinishedI18NModules() throws IOException {
      Properties props = new Properties();
-     InputStream is = new FileInputStream(new File("jmri/src/test/java/util/i18n_known_errors.properties"));
+     InputStream is = new FileInputStream(new File("src/test/java/util/i18n_known_errors.properties"));
      try {
      props.load(is);
      } catch (Exception e) {

@@ -172,7 +172,7 @@ public class CreateTestObjects {
 
     public static void createTestFiles() {
         // Copy ProgramProperties
-        final File source = new File("jmri/src/test/java/jmri/jmrit/ctc/setup/");
+        final File source = new File("src/test/java/jmri/jmrit/ctc/setup/");
         final String props = "ProgramProperties.xml";
         final String system = "CTCSystem.xml";
 

@@ -47,7 +47,7 @@ public class SignalPairTest {
 
     void getCPEandCB() {
         Assume.assumeFalse(GraphicsEnvironment.isHeadless());
-        File f = new File("jmri/src/test/java/jmri/jmrit/display/controlPanelEditor/valid/CircuitBuilderTest.xml");
+        File f = new File("src/test/java/jmri/jmrit/display/controlPanelEditor/valid/CircuitBuilderTest.xml");
         try {
             InstanceManager.getDefault(ConfigureManager.class).load(f);
         } catch(JmriException je) {

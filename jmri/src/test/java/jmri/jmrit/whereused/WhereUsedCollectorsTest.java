@@ -96,7 +96,7 @@ public class WhereUsedCollectorsTest {
         JUnitUtil.initSectionManager();
         JUnitUtil.clearBlockBossLogic();
 
-        java.io.File f = new java.io.File("jmri/src/test/java/jmri/jmrit/whereused/load/WhereUsedTesting.xml");  // NOI18N
+        java.io.File f = new java.io.File("src/test/java/jmri/jmrit/whereused/load/WhereUsedTesting.xml");  // NOI18N
         InstanceManager.getDefault(ConfigureManager.class).load(f);
     }
 

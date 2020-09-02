@@ -29,7 +29,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 public class LoadAndStoreTest extends jmri.configurexml.LoadAndStoreTestBase {
 
     public static Stream<Arguments> data() {
-        return getFiles(new File("jmri/src/test/java/jmri/jmrix/loconet/configurexml"), false, true);
+        return getFiles(new File("src/test/java/jmri/jmrix/loconet/configurexml"), false, true);
     }
 
     @ParameterizedTest(name = "{index}: {0} (pass={1})")

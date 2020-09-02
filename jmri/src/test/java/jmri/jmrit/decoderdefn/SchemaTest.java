@@ -25,9 +25,9 @@ public class SchemaTest extends SchemaTestBase {
         // check that name list file is valid
         files.addAll(getFiles(new File("xml/names.xml"), true, true).collect(Collectors.toList()));
         // check that the schema passes useful constructs
-        files.addAll(getFiles(new File("jmri/src/test/java/jmri/jmrit/decoderdefn/pass"), true, true).collect(Collectors.toList()));
+        files.addAll(getFiles(new File("src/test/java/jmri/jmrit/decoderdefn/pass"), true, true).collect(Collectors.toList()));
         // check that the schema detects errors
-        files.addAll(getFiles(new File("jmri/src/test/java/jmri/jmrit/decoderdefn/fail"), true, false).collect(Collectors.toList()));
+        files.addAll(getFiles(new File("src/test/java/jmri/jmrit/decoderdefn/fail"), true, false).collect(Collectors.toList()));
         // check that decoder definitions are valid
         files.addAll(getFiles(new File("xml/decoders/"), true, true).collect(Collectors.toList()));
         // check that decoderIndex is valid

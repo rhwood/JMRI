@@ -26,7 +26,7 @@ public class MemoryContentsTest {
         log.debug("Begin of testReadNormalFile");
 
         try {
-            m.readHex(new java.io.File("jmri/src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile.hex"));
+            m.readHex(new java.io.File("src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile.hex"));
         } catch (jmri.jmrit.MemoryContents.MemoryFileRecordLengthException e) {
             Assert.fail("Unexpected record length exception"); // got an unexpected exception so fail.
         } catch (jmri.jmrit.MemoryContents.MemoryFileChecksumException e) {
@@ -56,7 +56,7 @@ public class MemoryContentsTest {
         log.debug("Begin of testReadSegmentsTestFile");
 
         try {
-            m.readHex(new java.io.File("jmri/src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_extSegRecords.hex"));
+            m.readHex(new java.io.File("src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_extSegRecords.hex"));
         } catch (jmri.jmrit.MemoryContents.MemoryFileRecordLengthException e) {
             Assert.fail("Unexpected record length exception"); // got an unexpected exception so fail.
         } catch (jmri.jmrit.MemoryContents.MemoryFileChecksumException e) {
@@ -115,7 +115,7 @@ public class MemoryContentsTest {
     public void testReadNormal24BitAddressFile() throws java.io.FileNotFoundException {
         MemoryContents m = new MemoryContents();
         log.debug("Begin of testReadNormal24BitAddressFile");
-        String filename = "jmri/src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_24bit.hex";
+        String filename = "src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_24bit.hex";
         try {
             m.readHex(new java.io.File(filename));
         } catch (jmri.jmrit.MemoryContents.MemoryFileRecordLengthException e) {
@@ -273,7 +273,7 @@ public class MemoryContentsTest {
 
         boolean expectedExceptionHappened = false;
         try {
-            m.readHex(new java.io.File("jmri/src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_cksumErr.hex"));
+            m.readHex(new java.io.File("src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_cksumErr.hex"));
         } catch (jmri.jmrit.MemoryContents.MemoryFileRecordLengthException e) {
             Assert.fail("Unexpected record length exception"); // got an unexpected exception so fail.
         } catch (jmri.jmrit.MemoryContents.MemoryFileChecksumException e) {
@@ -306,7 +306,7 @@ public class MemoryContentsTest {
 
         boolean expectedExceptionHappened = false;
         try {
-            m.readHex(new java.io.File("jmri/src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_recordTypeError.hex"));
+            m.readHex(new java.io.File("src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_recordTypeError.hex"));
         } catch (jmri.jmrit.MemoryContents.MemoryFileRecordLengthException e) {
             Assert.fail("Unexpected record length exception"); // got an unexpected exception so fail.
         } catch (jmri.jmrit.MemoryContents.MemoryFileChecksumException e) {
@@ -340,7 +340,7 @@ public class MemoryContentsTest {
 
         boolean expectedExceptionHappened = false;
         try {
-            m.readHex(new java.io.File("jmri/src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_recordLenError.hex"));
+            m.readHex(new java.io.File("src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_recordLenError.hex"));
         } catch (jmri.jmrit.MemoryContents.MemoryFileRecordLengthException e) {
             expectedExceptionHappened = true;
         } catch (jmri.jmrit.MemoryContents.MemoryFileChecksumException e) {
@@ -384,7 +384,7 @@ public class MemoryContentsTest {
 
         boolean expectedExceptionHappened = false;
         try {
-            m.readHex(new java.io.File("jmri/src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_file_doesnt_exist.hex"));
+            m.readHex(new java.io.File("src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_file_doesnt_exist.hex"));
         } catch (java.io.FileNotFoundException e) {
             expectedExceptionHappened = true;
         } catch (jmri.jmrit.MemoryContents.MemoryFileRecordLengthException e) {
@@ -421,7 +421,7 @@ public class MemoryContentsTest {
 
         boolean expectedExceptionHappened = false;
         try {
-            m.readHex(new java.io.File("jmri/src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_malformed_line.hex"));
+            m.readHex(new java.io.File("src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_malformed_line.hex"));
         } catch (java.io.FileNotFoundException e) {
             Assert.fail("Unexpected file-not-found exception e");
         } catch (jmri.jmrit.MemoryContents.MemoryFileRecordLengthException e) {
@@ -457,7 +457,7 @@ public class MemoryContentsTest {
 
         boolean expectedExceptionHappened = false;
         try {
-            m.readHex(new java.io.File("jmri/src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_noEOFRecord.hex"));
+            m.readHex(new java.io.File("src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_noEOFRecord.hex"));
         } catch (java.io.FileNotFoundException e) {
             Assert.fail("Unexpected file-not-found exception e");
         } catch (jmri.jmrit.MemoryContents.MemoryFileRecordLengthException e) {
@@ -493,7 +493,7 @@ public class MemoryContentsTest {
 
         boolean expectedExceptionHappened = false;
         try {
-            m.readHex(new java.io.File("jmri/src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_no_data_records.dmf"));
+            m.readHex(new java.io.File("src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_no_data_records.dmf"));
         } catch (java.io.FileNotFoundException e) {
             Assert.fail("Unexpected file-not-found exception e");
         } catch (jmri.jmrit.MemoryContents.MemoryFileRecordLengthException e) {
@@ -528,7 +528,7 @@ public class MemoryContentsTest {
         log.debug("Begin of testReadFile16bitContentFile");
 
         try {
-            m.readHex(new java.io.File("jmri/src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_16bit.hex"));
+            m.readHex(new java.io.File("src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_16bit.hex"));
         } catch (java.io.FileNotFoundException e) {
             Assert.fail("Unexpected file-not-found exception e");
         } catch (jmri.jmrit.MemoryContents.MemoryFileRecordLengthException e) {
@@ -559,7 +559,7 @@ public class MemoryContentsTest {
 
         boolean expectedExceptionHappened = false;
         try {
-            m.readHex(new java.io.File("jmri/src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_RecType02bad.hex"));
+            m.readHex(new java.io.File("src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_RecType02bad.hex"));
         } catch (java.io.FileNotFoundException e) {
             Assert.fail("Unexpected file-not-found exception e");
         } catch (jmri.jmrit.MemoryContents.MemoryFileRecordLengthException e) {
@@ -595,7 +595,7 @@ public class MemoryContentsTest {
 
         boolean expectedExceptionHappened = false;
         try {
-            m.readHex(new java.io.File("jmri/src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_RecType02bad_2.hex"));
+            m.readHex(new java.io.File("src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_RecType02bad_2.hex"));
         } catch (java.io.FileNotFoundException e) {
             Assert.fail("Unexpected file-not-found exception e");
         } catch (jmri.jmrit.MemoryContents.MemoryFileRecordLengthException e) {
@@ -630,7 +630,7 @@ public class MemoryContentsTest {
         log.debug("Begin of testReadFileHighSegments");
 
         try {
-            m.readHex(new java.io.File("jmri/src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_24bitHighSegs.hex"));
+            m.readHex(new java.io.File("src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_24bitHighSegs.hex"));
         } catch (java.io.FileNotFoundException e) {
             Assert.fail("Unexpected file-not-found exception e");
         } catch (jmri.jmrit.MemoryContents.MemoryFileRecordLengthException e) {
@@ -680,7 +680,7 @@ public class MemoryContentsTest {
         boolean expectedExceptionHappened = false;
 
         try {
-            m.readHex(new java.io.File("jmri/src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_16bit_pagecross.hex"));
+            m.readHex(new java.io.File("src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_16bit_pagecross.hex"));
         } catch (java.io.FileNotFoundException e) {
             Assert.fail("Unexpected file-not-found exception e");
         } catch (jmri.jmrit.MemoryContents.MemoryFileRecordLengthException e) {
@@ -757,7 +757,7 @@ public class MemoryContentsTest {
         boolean expectedExceptionHappened = false;
 
         try {
-            m.readHex(new java.io.File("jmri/src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_24bit_pagecross.hex"));
+            m.readHex(new java.io.File("src/test/java/jmri/jmrit/MemoryContentsTestFiles/TestFiles/MemoryContentsTestFile_24bit_pagecross.hex"));
         } catch (java.io.FileNotFoundException e) {
             Assert.fail("Unexpected file-not-found exception e");
         } catch (jmri.jmrit.MemoryContents.MemoryFileRecordLengthException e) {

@@ -17,7 +17,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 public class SchemaTest extends SchemaTestBase {
 
     public static Stream<Arguments> data() {
-        return setTestFilesBelowThisPath("jmri/src/test/java/jmri/configurexml");
+        return setTestFilesBelowThisPath("src/test/java/jmri/configurexml");
     }
 
     @ParameterizedTest

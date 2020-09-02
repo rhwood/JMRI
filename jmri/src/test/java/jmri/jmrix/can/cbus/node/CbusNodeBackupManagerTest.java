@@ -91,7 +91,7 @@ public class CbusNodeBackupManagerTest {
         
        // jmri.util.FileUtil.createDirectory("cbus" + java.io.File.separator + "node");
         
-        java.io.File dir = new java.io.File("jmri/src/test/java/jmri/jmrix/can/cbus/node/");
+        java.io.File dir = new java.io.File("src/test/java/jmri/jmrix/can/cbus/node/");
         java.io.File systemFile = new java.io.File(dir, "41375.xml");
 
         // note that 41375.xml deliberately has the backup in the wrong order 
@@ -161,7 +161,7 @@ public class CbusNodeBackupManagerTest {
         CbusNode node = new CbusNode(null,41375);
         CbusNodeBackupManager t = new CbusNodeBackupManager(node);
         
-        java.io.File dir = new java.io.File("jmri/src/test/java/jmri/jmrix/can/cbus/node/");
+        java.io.File dir = new java.io.File("src/test/java/jmri/jmrix/can/cbus/node/");
         java.io.File systemFile = new java.io.File(dir, "41375.xml");
 
         // note that 41375.xml deliberately has the backup in the wrong order 
@@ -243,7 +243,7 @@ public class CbusNodeBackupManagerTest {
         CbusNode node = new CbusNode(null,41376);
         CbusNodeBackupManager t = new CbusNodeBackupManager(node);
         
-        java.io.File dir = new java.io.File("jmri/src/test/java/jmri/jmrix/can/cbus/node/");
+        java.io.File dir = new java.io.File("src/test/java/jmri/jmrix/can/cbus/node/");
         java.io.File systemFile = new java.io.File(dir, "41376.xml");
 
         java.nio.file.Files.copy(systemFile.toPath(), t.getFileLocation().toPath(), 
@@ -332,7 +332,7 @@ public class CbusNodeBackupManagerTest {
         CbusNode node = new CbusNode(null,41377);
         CbusNodeBackupManager t = new CbusNodeBackupManager(node);
         
-        java.io.File dir = new java.io.File("jmri/src/test/java/jmri/jmrix/can/cbus/node/");
+        java.io.File dir = new java.io.File("src/test/java/jmri/jmrix/can/cbus/node/");
         java.io.File systemFile = new java.io.File(dir, "41377.xml");
 
         java.nio.file.Files.copy(systemFile.toPath(), t.getFileLocation().toPath(), 
@@ -379,7 +379,7 @@ public class CbusNodeBackupManagerTest {
         CbusNode node = new CbusNode(null,41378);
         CbusNodeBackupManager t = new CbusNodeBackupManager(node);
         
-        java.io.File dir = new java.io.File("jmri/src/test/java/jmri/jmrix/can/cbus/node/");
+        java.io.File dir = new java.io.File("src/test/java/jmri/jmrix/can/cbus/node/");
         java.io.File systemFile = new java.io.File(dir, "41378.xml");
 
         java.nio.file.Files.copy(systemFile.toPath(), t.getFileLocation().toPath(), 

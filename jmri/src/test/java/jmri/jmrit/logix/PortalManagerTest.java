@@ -67,7 +67,7 @@ public class PortalManagerTest {
     @DisabledIfSystemProperty(named ="jmri.skipTestsRequiringSeparateRunning", matches ="true")
     public void testChangeNames() throws Exception {
         // load and display
-        File f = new File("jmri/src/test/java/jmri/jmrit/logix/valid/ShortBlocksTest.xml");
+        File f = new File("src/test/java/jmri/jmrit/logix/valid/ShortBlocksTest.xml");
         InstanceManager.getDefault(ConfigureManager.class).load(f);
         
         ControlPanelEditor panel = (ControlPanelEditor) jmri.util.JmriJFrame.getFrame("LinkedWarrantsTest");

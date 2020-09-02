@@ -28,7 +28,7 @@ public class JythonSigletTest {
 
     @Test
     public void testSiglet() {
-        JythonSiglet js = new JythonSiglet(FileUtil.getAbsoluteFilename("program:jmri/src/test/java/jmri/jmrit/automat/jython-siglet.py"));
+        JythonSiglet js = new JythonSiglet(FileUtil.getAbsoluteFilename("program:src/test/java/jmri/jmrit/automat/jython-siglet.py"));
         Turnout input = InstanceManager.turnoutManagerInstance().provide("input");
         input.setCommandedState(Turnout.CLOSED);
         Turnout output = InstanceManager.turnoutManagerInstance().provide("output");

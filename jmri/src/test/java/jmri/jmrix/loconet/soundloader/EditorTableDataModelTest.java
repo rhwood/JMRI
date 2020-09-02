@@ -14,7 +14,7 @@ public class EditorTableDataModelTest {
 
     @Test
     public void testCTor() {
-        SpjFile testFile = new SpjFile(new java.io.File("jmri/src/test/java/jmri/jmrix/loconet/spjfile/test.spj"));
+        SpjFile testFile = new SpjFile(new java.io.File("src/test/java/jmri/jmrix/loconet/spjfile/test.spj"));
         EditorTableDataModel t = new EditorTableDataModel(testFile);
         Assert.assertNotNull("exists",t);
     }

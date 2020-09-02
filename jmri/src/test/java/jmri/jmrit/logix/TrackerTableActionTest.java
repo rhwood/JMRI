@@ -43,7 +43,7 @@ public class TrackerTableActionTest {
         WarrantPreferences.getDefault().setShutdown(WarrantPreferences.Shutdown.NO_MERGE);
 
         // load and display
-        File f = new File("jmri/src/test/java/jmri/jmrit/logix/valid/IndicatorDemoTest.xml");
+        File f = new File("src/test/java/jmri/jmrit/logix/valid/IndicatorDemoTest.xml");
         InstanceManager.getDefault(ConfigureManager.class).load(f);
         ControlPanelEditor panel = (ControlPanelEditor) jmri.util.JmriJFrame.getFrame("Indicator Demo 1 Editor");
         panel.setVisible(false);
@@ -98,7 +98,7 @@ public class TrackerTableActionTest {
         WarrantPreferences.getDefault().setShutdown(WarrantPreferences.Shutdown.NO_MERGE);
 
         // load and display
-        File f = new File("jmri/src/test/java/jmri/jmrit/logix/valid/IndicatorDemoTest.xml");
+        File f = new File("src/test/java/jmri/jmrit/logix/valid/IndicatorDemoTest.xml");
         InstanceManager.getDefault(ConfigureManager.class).load(f);
         ControlPanelEditor panel = (ControlPanelEditor) jmri.util.JmriJFrame.getFrame("Indicator Demo 1 Editor");
         panel.setVisible(false);
@@ -138,7 +138,7 @@ public class TrackerTableActionTest {
         WarrantPreferences.getDefault().setShutdown(WarrantPreferences.Shutdown.NO_MERGE);
 
         // load and display
-        File f = new File("jmri/src/test/java/jmri/jmrit/logix/valid/IndicatorDemoTest.xml");
+        File f = new File("src/test/java/jmri/jmrit/logix/valid/IndicatorDemoTest.xml");
         InstanceManager.getDefault(ConfigureManager.class).load(f);
         ControlPanelEditor panel = (ControlPanelEditor) jmri.util.JmriJFrame.getFrame("Indicator Demo 1 Editor");
         panel.setVisible(false);

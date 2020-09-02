@@ -14,7 +14,7 @@ public class VSDecoderTest {
 
     @Test
     public void testCTor() throws java.util.zip.ZipException, java.io.IOException {
-        VSDecoder t = new VSDecoder("Test", "steam1min8","jmri/src/test/java/jmri/jmrit/vsdecoder/steam1min8.zip");
+        VSDecoder t = new VSDecoder("Test", "steam1min8","src/test/java/jmri/jmrit/vsdecoder/steam1min8.zip");
         Assert.assertNotNull("exists",t);
     }
 

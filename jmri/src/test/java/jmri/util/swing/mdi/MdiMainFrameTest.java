@@ -18,9 +18,9 @@ public class MdiMainFrameTest {
     public void testShow() {
         Assume.assumeFalse(GraphicsEnvironment.isHeadless());
         MdiMainFrame f = new MdiMainFrame("Test of MDI Frame",
-                "jmri/src/test/java/jmri/util/swing/xml/Gui3LeftTree.xml",
-                "jmri/src/test/java/jmri/util/swing/xml/Gui3Menus.xml",
-                "jmri/src/test/java/jmri/util/swing/xml/Gui3MainToolBar.xml"
+                "src/test/java/jmri/util/swing/xml/Gui3LeftTree.xml",
+                "src/test/java/jmri/util/swing/xml/Gui3Menus.xml",
+                "src/test/java/jmri/util/swing/xml/Gui3MainToolBar.xml"
         );
         f.setSize(new java.awt.Dimension(400, 400));
         f.setVisible(true);

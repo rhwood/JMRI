@@ -23,7 +23,7 @@ public class EditorFrameTest extends jmri.util.JmriJFrameTestBase {
         JUnitUtil.setUp();
         jmri.util.JUnitUtil.resetProfileManager();
         try {
-           b = new SdfBuffer("jmri/src/test/java/jmri/jmrix/loconet/sdf/test2.sdf");
+           b = new SdfBuffer("src/test/java/jmri/jmrix/loconet/sdf/test2.sdf");
         } catch(java.io.IOException ioe){
            Assert.fail("Failed to initialize SdfBuffer");
         }

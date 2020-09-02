@@ -37,13 +37,13 @@ public class LoadAtStartUpTest {
         WarrantPreferences.getDefault().setShutdown(WarrantPreferences.Shutdown.NO_MERGE);
 
         // load layout file
-        java.io.File f = new java.io.File("jmri/src/test/java/jmri/jmrit/dispatcher/DispatcherSMLLayout.xml");
+        java.io.File f = new java.io.File("src/test/java/jmri/jmrit/dispatcher/DispatcherSMLLayout.xml");
         cm.load(f);
         // load dispatcher, with all the correct options
-        OptionsFile.setDefaultFileName("jmri/src/test/java/jmri/jmrit/dispatcher/TestTrainDispatcherOptions.xml");
+        OptionsFile.setDefaultFileName("src/test/java/jmri/jmrit/dispatcher/TestTrainDispatcherOptions.xml");
         DispatcherFrame d = InstanceManager.getDefault(DispatcherFrame.class);
         JFrameOperator dw = new JFrameOperator(Bundle.getMessage("TitleDispatcher"));
-        FileUtil.setUserFilesPath(ProfileManager.getDefault().getActiveProfile(), "jmri/src/test/java/jmri/jmrit");
+        FileUtil.setUserFilesPath(ProfileManager.getDefault().getActiveProfile(), "src/test/java/jmri/jmrit");
         // we need a throttle manager
         ThrottleManager m = InstanceManager.getDefault(ThrottleManager.class);
         // signal mast manager

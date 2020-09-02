@@ -31,7 +31,7 @@ public class UnzipFileClassTest  {
         new File("temp").mkdirs();
         new File("temp/UnzipFileClass//UnzipFileClass.txt").delete();
         
-        UnzipFileClass.unzipFunction(new File("temp/UnzipFileClass"), new FileInputStream("jmri/src/test/java/jmri/util/UnzipFileClassTest.zip")); // build.xml is not a .zip file
+        UnzipFileClass.unzipFunction(new File("temp/UnzipFileClass"), new FileInputStream("src/test/java/jmri/util/UnzipFileClassTest.zip")); // build.xml is not a .zip file
         
         Assert.assertTrue(new File("temp/UnzipFileClass/UnzipFileClass.txt").exists());
     }

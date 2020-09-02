@@ -14,7 +14,7 @@ public class EditorFilePaneTest {
 
     @Test
     public void testCTor() throws java.io.IOException {
-        File testFile = new File("jmri/src/test/java/jmri/jmrix/loconet/spjfile/test.spj");
+        File testFile = new File("src/test/java/jmri/jmrix/loconet/spjfile/test.spj");
         EditorFilePane t = new EditorFilePane(testFile);
         Assert.assertNotNull("exists",t);
     }

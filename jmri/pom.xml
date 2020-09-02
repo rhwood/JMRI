@@ -15,7 +15,7 @@
 
     <properties>
         <!-- test environment -->
-        <jmri.path.program>${parent.basedir}</jmri.path.program>
+        <jmri.path.program>${basedir}</jmri.path.program>
         <jmri.prefsdir>${basedir}/temp</jmri.prefsdir>
         <jmri.shutdownmanager>jmri.util.MockShutDownManager</jmri.shutdownmanager>
     </properties>
@@ -303,7 +303,7 @@
                         <exclude>jmri.util.TestWaitsForever</exclude>
                     </excludes>
                     <systemPropertyVariables>
-                        <jmri.path.program>${parent.basedir}</jmri.path.program>
+                        <jmri.path.program>${basedir}</jmri.path.program>
                         <jmri.path.resources>${parent.basedir}/resources</jmri.path.resources>
                         <jmri.prefsdir>${basedir}/target/temp</jmri.prefsdir>
                         <jmri.log4jconfigfilename>${basedir}/tests.lcf</jmri.log4jconfigfilename>
@@ -311,7 +311,7 @@
                         <jinput.useDefaultPlugin>false</jinput.useDefaultPlugin><!-- don't load JInput during CI tests -->
                     </systemPropertyVariables>
                     <trimStackTrace>false</trimStackTrace>
-                    <workingDirectory>../</workingDirectory>
+                    <workingDirectory>${basedir}</workingDirectory>
                     <!-- -ea or -da in the next line to control Java asserts -->
                     <argLine>@{argLine} @{surefire.argLine} -Djava.security.policy=../lib/security.policy</argLine>
                     <useSystemClassLoader>true</useSystemClassLoader>
@@ -333,7 +333,7 @@
                             <goal>verify</goal>
                         </goals>
                         <configuration>
-                            <workingDirectory>../</workingDirectory>
+                            <workingDirectory>${basedir}</workingDirectory>
                             <argLine>@{argLine} @{failsafe.argLine} -Djava.security.policy=../lib/security.policy</argLine>
                         </configuration>
                     </execution>

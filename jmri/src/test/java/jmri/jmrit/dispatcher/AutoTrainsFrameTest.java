@@ -22,7 +22,7 @@ public class AutoTrainsFrameTest extends jmri.util.JmriJFrameTestBase {
     public void setUp() {
         JUnitUtil.setUp();
         JUnitUtil.resetProfileManager();
-        OptionsFile.setDefaultFileName("jmri/src/test/java/jmri/jmrit/dispatcher/dispatcheroptions.xml");  // exist?
+        OptionsFile.setDefaultFileName("src/test/java/jmri/jmrit/dispatcher/dispatcheroptions.xml");  // exist?
         JUnitUtil.initDebugThrottleManager();
         if (!GraphicsEnvironment.isHeadless()) {
             WarrantPreferences.getDefault().setShutdown(WarrantPreferences.Shutdown.NO_MERGE);

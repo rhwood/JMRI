@@ -30,8 +30,7 @@ public class XmlFileTest {
     // file urls are relative to the 
     // program directory
     final static String testFileDir = 
-            "jmri" + File.separator
-            + "src" + File.separator
+            "src" + File.separator
             + "test" + File.separator
             + "java" + File.separator
             + "jmri" + File.separator
@@ -225,7 +224,7 @@ public class XmlFileTest {
         // Document from test file
         Document doc;
         Element e;
-        FileInputStream fs = new FileInputStream(new File("jmri/src/test/java/jmri/jmrit/XmlFileTest_PI.xml"));
+        FileInputStream fs = new FileInputStream(new File("src/test/java/jmri/jmrit/XmlFileTest_PI.xml"));
         try {
             SAXBuilder builder = XmlFile.getBuilder(XmlFile.Validate.None);  // argument controls validation
             doc = builder.build(new BufferedInputStream(fs));

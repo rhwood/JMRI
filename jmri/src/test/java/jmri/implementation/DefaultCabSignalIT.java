@@ -46,7 +46,7 @@ public class DefaultCabSignalIT {
         // load and display test panel file
         InstanceManager.getDefault(jmri.jmrit.display.layoutEditor.LayoutBlockManager.class).setStabilisedSensor("IS_ROUTING_DONE");
 
-        java.io.File f = new java.io.File("jmri/src/test/java/jmri/jmrit/cabsignals/SimpleCabSignalTestPanel.xml");
+        java.io.File f = new java.io.File("src/test/java/jmri/jmrit/cabsignals/SimpleCabSignalTestPanel.xml");
         InstanceManager.getDefault(jmri.ConfigureManager.class).load(f);
 
         // Find new window by name (should be more distinctive, comes from sample file)

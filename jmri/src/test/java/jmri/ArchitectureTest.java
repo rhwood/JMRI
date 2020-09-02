@@ -23,7 +23,7 @@ import com.tngtech.archunit.library.freeze.FreezingArchRule;
  * the ones in target/test-classes, which come from java/test.  It's relying on the common
  * build procedure to make this distinction.
  * 
- * See examples in the <a href='https://github.com/TNG/ArchUnit-Examples/tree/master/example-plain/jmri/src/test/java/com/tngtech/archunit/exampletest">ArchUnit sample code</a>.
+ * See examples in the <a href='https://github.com/TNG/ArchUnit-Examples/tree/master/example-plain/src/test/java/com/tngtech/archunit/exampletest">ArchUnit sample code</a>.
  *
  * @author Bob Jacobsen 2019
  */
