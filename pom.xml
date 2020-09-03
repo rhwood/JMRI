@@ -4,10 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <name>JMRI</name>
+    <name>JMRI Parent</name>
     <groupId>org.jmri</groupId>
-    <artifactId>jmri</artifactId>
+    <artifactId>jmri-parent</artifactId>
     <version>4.21.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+       <module>jmri</module>
+       <module>testutil</module>
+       <module>apps</module>
+    </modules>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <release.build_user>${user.name}</release.build_user>
@@ -115,6 +123,14 @@
                         </configuration>
                     </plugin>
                     <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>${failsafe.version}</version>
+                        <configuration>
+                            <skipTests>true</skipTests>
+                        </configuration>
+                    </plugin>
+                    <plugin>
                         <groupId>com.github.spotbugs</groupId>
                         <artifactId>spotbugs-maven-plugin</artifactId>
                         <version>3.1.12</version>
@@ -136,40 +152,11 @@
                                     <goal>check</goal>
                                 </goals>
                                 <configuration>
-                                    <excludeFilterFile>.spotbugs-check.xml</excludeFilterFile>
+                                    <excludeFilterFile>${basedir}/.spotbugs-check.xml</excludeFilterFile>
                                     <effort>Max</effort>
                                     <threshold>Low</threshold>
                                     <maxHeap>1536</maxHeap>
                                     <timeout>1200000</timeout><!-- 20 minutes -->
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-checkstyle-plugin</artifactId>
-                        <version>3.1.0</version>
-                        <executions>
-                            <execution>
-                                <phase>test</phase>
-                                <goals>
-                                    <goal>check</goal>
-                                </goals>
-                                <configuration>
-                                    <!-- with exception of violationSeverity should match non-profiled checkstyle config and ant checkstyle config -->
-                                    <failOnViolation>true</failOnViolation>
-                                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                                    <sourceDirectories>
-                                        <sourceDirectory>${basedir}</sourceDirectory>
-                                    </sourceDirectories>
-                                    <includes>**/*</includes>
-                                    <excludes>**/*.jpg,**/*.PNG,**/*.jar,**/*.dll,**/*.dylib,**/*.so,**/*.exe,
-                                        **/*.zip,**/*.icns,**/*.bat,**/*.ttf,**/*.vsd,**/*.wav,**/*.spj,
-                                        **/*.pdf,.metadata/.plugins/org.eclipse.core.resources/**,
-                                        help/en/JavaHelpSearch/**,help/fr/JavaHelpSearch/**,
-                                        web/app/node_modules/**,.git/**,target/**</excludes>
-                                    <!-- only show errors, not warnings or infos -->
-                                    <violationSeverity>error</violationSeverity>
                                 </configuration>
                             </execution>
                         </executions>
@@ -189,10 +176,12 @@
                             <compilerId>eclipse</compilerId>
                             <source>1.8</source>
                             <target>1.8</target>
+                            <compilerArguments>
+                                <properties>${project.basedir}/src/test/resources/ecj.warning.options-ci</properties>
+                            </compilerArguments>
                             <compilerArgs>
-                                <properties>${basedir}/java/ecj.warning.options-ci</properties>
                                 <arg>-sourcepath</arg>
-                                <arg>${basedir}/java/src:${basedir}/target/generated-sources</arg>
+                                <arg>${project.basedir}/src/main/java/:${project.basedir}/target/generated-sources</arg>
                             </compilerArgs>
                         </configuration>
                         <dependencies>
@@ -347,44 +336,6 @@
     </profiles>
 
     <build>
-        <sourceDirectory>${basedir}/java/src</sourceDirectory>
-        <testSourceDirectory>${basedir}/java/test</testSourceDirectory>
-        <resources>
-            <resource>
-                <directory>${basedir}/java/src</directory>
-                <filtering>false</filtering>
-                <includes>
-                    <include>**</include>
-                </includes>
-                <excludes>
-                    <exclude>**/*.java</exclude>
-                </excludes>
-            </resource>
-            <resource>
-                <directory>${basedir}/java/template</directory>
-                <filtering>true</filtering>
-                <includes>
-                    <include>jmri/Version.properties</include>
-                </includes>
-            </resource>
-        </resources>
-        <testResources>
-            <testResource>
-                <directory>${basedir}/java/test</directory>
-                <filtering>false</filtering>
-                <includes>
-                    <include>**</include>
-                </includes>
-                <excludes>
-                    <exclude>**/*.java</exclude>
-                </excludes>
-            </testResource>
-        </testResources>
-        <filters>
-            <filter>${basedir}/release.properties</filter>
-            <filter>${project.build.directory}/generated/build-metadata/build.properties</filter>
-        </filters>
-
         <plugins>
             <plugin>
                 <groupId>org.pitest</groupId>
@@ -485,7 +436,7 @@
                             <version>1.5.0</version>
                         </plugin>
                     </plugins>
-                    <excludeFilterFile>.spotbugs-check.xml</excludeFilterFile>
+                    <excludeFilterFile>${basedir}/.spotbugs-check.xml</excludeFilterFile>
                     <effort>Max</effort>
                     <threshold>Low</threshold>
                     <maxHeap>1536</maxHeap>
@@ -926,26 +877,6 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <configuration>
-                    <!-- with exception of violationSeverity should match travis-spotbugs profile checkstyle config and ant checkstyle config -->
-                    <failOnViolation>true</failOnViolation>
-                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                    <sourceDirectories>
-                        <sourceDirectory>${basedir}</sourceDirectory>
-                    </sourceDirectories>
-                    <includes>**/*</includes>
-                    <excludes>**/*.jpg,**/*.PNG,**/*.jar,**/*.dll,**/*.dylib,**/*.so,**/*.exe,
-                        **/*.zip,**/*.icns,**/*.bat,**/*.ttf,**/*.vsd,**/*.wav,**/*.spj,
-                        **/*.pdf,.metadata/.plugins/org.eclipse.core.resources/**,
-                        help/en/JavaHelpSearch/**,help/fr/JavaHelpSearch/**,
-                        web/app/node_modules/**,.git/**,target/**</excludes>
-                    <!-- show errors, warnings, and infos -->
-                    <violationSeverity>info</violationSeverity>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
@@ -1071,18 +1002,6 @@
                     </executions>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>3.1.0</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>com.puppycrawl.tools</groupId>
-                            <artifactId>checkstyle</artifactId>
-                            <version>8.29</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-                <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>properties-maven-plugin</artifactId>
                     <version>1.0.0</version>
@@ -1139,11 +1058,6 @@
                         </reports>
                     </reportSet>
                 </reportSets>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.1.0</version>
             </plugin>
         </plugins>
     </reporting>
