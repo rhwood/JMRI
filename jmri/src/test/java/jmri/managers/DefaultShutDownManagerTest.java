@@ -54,7 +54,7 @@ public class DefaultShutDownManagerTest {
     @Test
     public void testDeregister_Task() {
         Assert.assertEquals(0, dsdm.tasks().size());
-        Runnable task = new AbstractShutDownTask("task") {
+        ShutDownTask task = new AbstractShutDownTask("task") {
             @Override
             public void run() {
             }
