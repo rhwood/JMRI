@@ -16,7 +16,6 @@ import jmri.InstanceManager;
 import jmri.ShutDownManager;
 import jmri.ShutDownTask;
 import jmri.implementation.AbstractShutDownTask;
-import jmri.implementation.QuietShutDownTask;
 import jmri.util.JUnitAppender;
 import jmri.util.JUnitUtil;
 
@@ -40,7 +39,7 @@ public class DefaultShutDownManagerTest {
     @Test
     public void testRegister_Task() {
         Assert.assertEquals(0, dsdm.tasks().size());
-        ShutDownTask task = new QuietShutDownTask("task") {
+        ShutDownTask task = new AbstractShutDownTask("task") {
             @Override
             public void run() {
             }
@@ -55,7 +54,7 @@ public class DefaultShutDownManagerTest {
     @Test
     public void testDeregister_Task() {
         Assert.assertEquals(0, dsdm.tasks().size());
-        ShutDownTask task = new QuietShutDownTask("task") {
+        Runnable task = new AbstractShutDownTask("task") {
             @Override
             public void run() {
             }
