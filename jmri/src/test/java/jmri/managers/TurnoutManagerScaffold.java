@@ -65,12 +65,6 @@ public class TurnoutManagerScaffold implements TurnoutManager {
     }
 
     @Override
-    @Nonnull
-    public java.util.List<Turnout> getNamedBeanList() {
-        return null;
-    }
-
-    @Override
     @CheckForNull
     public java.util.SortedSet<Turnout> getNamedBeanSet() {
         return null;

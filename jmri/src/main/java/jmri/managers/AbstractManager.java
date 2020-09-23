@@ -55,7 +55,6 @@ public abstract class AbstractManager<E extends NamedBean> extends VetoableChang
 
     // caches
     private ArrayList<String> cachedSystemNameList = null;
-    private ArrayList<E> cachedNamedBeanList = null;
 
     // Auto names. The atomic integer is always created even if not used, to
     // simplify concurrency.
@@ -211,7 +210,6 @@ public abstract class AbstractManager<E extends NamedBean> extends VetoableChang
 
         // clear caches
         cachedSystemNameList = null;
-        cachedNamedBeanList = null;
         
         // save this bean
         _beans.add(s);
@@ -279,7 +277,6 @@ public abstract class AbstractManager<E extends NamedBean> extends VetoableChang
 
         // clear caches
         cachedSystemNameList = null;
-        cachedNamedBeanList = null;
 
         // stop listening for user name changes
         s.removePropertyChangeListener(this);
@@ -364,18 +361,6 @@ public abstract class AbstractManager<E extends NamedBean> extends VetoableChang
             _beans.forEach(b -> cachedSystemNameList.add(b.getSystemName()));
         }
         return Collections.unmodifiableList(cachedSystemNameList);
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    @Nonnull
-    @Deprecated  // will be removed when superclass method is removed due to @Override
-    public List<E> getNamedBeanList() {
-        jmri.util.LoggingUtil.deprecationWarning(log, "getNamedBeanList");
-        if (cachedNamedBeanList == null) {
-            cachedNamedBeanList = new ArrayList<>(_beans);
-        }
-        return Collections.unmodifiableList(cachedNamedBeanList);
     }
 
     /** {@inheritDoc} */

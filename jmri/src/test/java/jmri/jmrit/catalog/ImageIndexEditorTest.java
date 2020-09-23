@@ -60,8 +60,8 @@ public class ImageIndexEditorTest {
 
     @AfterEach
     public void tearDown() {
-        JUnitUtil.tearDown();
         JUnitUtil.clearShutDownManager();
+        JUnitUtil.tearDown();
     }
 
     // private final static Logger log = LoggerFactory.getLogger(ImageIndexEditorTest.class);

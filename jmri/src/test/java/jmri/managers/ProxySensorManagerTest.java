@@ -218,8 +218,6 @@ public class ProxySensorManagerTest implements PropertyChangeListener {
         Sensor s2 = l.provideSensor("IS2");
         l.provideSensor("IS3");
         
-        List<Sensor> tlist = l.getNamedBeanList();
-
         l.deregister(s2);
     }
 
@@ -234,8 +232,6 @@ public class ProxySensorManagerTest implements PropertyChangeListener {
         Sensor s2 = l.provideSensor("JS2");
         l.provideSensor("JS3");
         
-        List<Sensor> tlist = l.getNamedBeanList();
-
         l.deregister(s2);
     }
 
@@ -266,16 +262,11 @@ public class ProxySensorManagerTest implements PropertyChangeListener {
         Sensor s2 = l.provideSensor("IS2");
         
         List<String> sortedList = l.getSystemNameList();
-        List<Sensor> beanList = l.getNamedBeanList();
         SortedSet<Sensor> beanSet = l.getNamedBeanSet();
         
         Assert.assertEquals("sorted list length", 2, sortedList.size());
         Assert.assertEquals("sorted list 1st", "IS2", sortedList.get(0));
         Assert.assertEquals("sorted list 2nd", "IS4", sortedList.get(1));
-
-        Assert.assertEquals("bean list length", 2, beanList.size());
-        Assert.assertEquals("bean list 1st", s2, beanList.get(0));
-        Assert.assertEquals("bean list 2nd", s4, beanList.get(1));
 
         Assert.assertEquals("bean set length", 2, beanSet.size());
         Iterator<Sensor> iter = beanSet.iterator();
@@ -290,10 +281,6 @@ public class ProxySensorManagerTest implements PropertyChangeListener {
         Assert.assertEquals("sorted list 1st", "IS2", sortedList.get(0));
         Assert.assertEquals("sorted list 2nd", "IS4", sortedList.get(1));
 
-        Assert.assertEquals("bean list length", 2, beanList.size());
-        Assert.assertEquals("bean list 1st", s2, beanList.get(0));
-        Assert.assertEquals("bean list 2nd", s4, beanList.get(1));
-
         Assert.assertEquals("bean set length", 4, beanSet.size());
         iter = beanSet.iterator();
         Assert.assertEquals("bean set 1st", s1, iter.next());
@@ -303,7 +290,6 @@ public class ProxySensorManagerTest implements PropertyChangeListener {
 
         // update and test update
         sortedList = l.getSystemNameList();
-        beanList = l.getNamedBeanList();
         beanSet = l.getNamedBeanSet();
         
         Assert.assertEquals("sorted list length", 4, sortedList.size());
@@ -311,12 +297,6 @@ public class ProxySensorManagerTest implements PropertyChangeListener {
         Assert.assertEquals("sorted list 2nd", "IS2", sortedList.get(1));
         Assert.assertEquals("sorted list 3rd", "IS3", sortedList.get(2));
         Assert.assertEquals("sorted list 4th", "IS4", sortedList.get(3));
-
-        Assert.assertEquals("bean list length", 4, beanList.size());
-        Assert.assertEquals("bean list 1st", s1, beanList.get(0));
-        Assert.assertEquals("bean list 2nd", s2, beanList.get(1));
-        Assert.assertEquals("bean list 3rd", s3, beanList.get(2));
-        Assert.assertEquals("bean list 4th", s4, beanList.get(3));
 
         Assert.assertEquals("bean set length", 4, beanSet.size());
         iter = beanSet.iterator();
@@ -333,17 +313,11 @@ public class ProxySensorManagerTest implements PropertyChangeListener {
         l.provideSensor("IS2");
         
         List<String> nameList = l.getSystemNameList();
-        List<Sensor> beanList = l.getNamedBeanList();
         SortedSet<Sensor> beanSet = l.getNamedBeanSet();
 
         try {
             nameList.add("Foo");
             Assert.fail("nameList should have thrown");
-        } catch (UnsupportedOperationException e) { /* this is OK */}
-
-        try {
-            beanList.add(s1);
-            Assert.fail("beanList should have thrown");
         } catch (UnsupportedOperationException e) { /* this is OK */}
 
         try {

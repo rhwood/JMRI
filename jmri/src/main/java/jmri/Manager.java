@@ -442,23 +442,6 @@ public interface Manager<E extends NamedBean> extends SilenceablePropertyChangeP
 
     /**
      * Provide an
-     * {@linkplain java.util.Collections#unmodifiableList unmodifiable} List of
-     * NamedBeans in system-name order.
-     * <p>
-     * Note: Access via {@link #getNamedBeanSet()} is faster.
-     * <p>
-     * Note: This is not a live list; the contents don't stay up to date
-     *
-     * @return Unmodifiable access to a List of NamedBeans
-     * @deprecated 4.11.5 - use direct access via {@link #getNamedBeanSet()}
-     */
-    @Deprecated // 4.11.5
-    @CheckReturnValue
-    @Nonnull
-    public List<E> getNamedBeanList();
-
-    /**
-     * Provide an
      * {@linkplain java.util.Collections#unmodifiableSet unmodifiable} SortedSet
      * of NamedBeans in system-name order.
      * <p>
@@ -472,41 +455,6 @@ public interface Manager<E extends NamedBean> extends SilenceablePropertyChangeP
     @CheckReturnValue
     @Nonnull
     public SortedSet<E> getNamedBeanSet();
-
-    /**
-     * Deprecated form to locate an existing instance based on a system name.
-     *
-     * @param systemName System Name of the required NamedBean
-     * @return requested NamedBean object or null if none exists
-     * @throws IllegalArgumentException if provided name is invalid
-     * @deprecated since 4.19.1
-     */
-    @CheckReturnValue
-    @CheckForNull
-    @Deprecated // 4.19.1
-    public default E getBeanBySystemName(@Nonnull String systemName) {
-        jmri.util.LoggingUtil.deprecationWarning(deprecatedManagerLogger, "getBeanBySystemName");
-        return getBySystemName(systemName);
-    }
-
-    /**
-     * Deprecated form to locate an existing instance based on a user name.
-     *
-     * @param userName System Name of the required NamedBean
-     * @return requested NamedBean object or null if none exists
-     * @deprecated since 4.19.1
-     */
-    @CheckReturnValue
-    @CheckForNull
-    @Deprecated // 4.19.1
-    public default E getBeanByUserName(@Nonnull String userName) {
-        jmri.util.LoggingUtil.deprecationWarning(deprecatedManagerLogger, "getBeanByUserName");
-        return getByUserName(userName);
-    }
-
-    // needed for deprecationWarning calls above, remove with them
-    @edu.umd.cs.findbugs.annotations.SuppressFBWarnings(value = "SLF4J_LOGGER_SHOULD_BE_PRIVATE",justification="Private not available in interface; just needed for deprecation")
-    static final org.slf4j.Logger deprecatedManagerLogger = org.slf4j.LoggerFactory.getLogger(Manager.class);
 
     /**
      * Locate an existing instance based on a system name.
