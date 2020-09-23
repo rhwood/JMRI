@@ -118,34 +118,6 @@ public abstract class AbstractManager<E extends NamedBean> extends VetoableChang
         _tuser.clear();
     }
 
-    /**
-     * Get a NamedBean by its system name.
-     *
-     * @param systemName the system name
-     * @return the result of {@link #getBySystemName(java.lang.String)}
-     *         with systemName
-     * @deprecated since 4.15.6; use
-     * {@link #getBySystemName(java.lang.String)} instead
-     */
-    @Deprecated
-    protected E getInstanceBySystemName(String systemName) {
-        return getBySystemName(systemName);
-    }
-
-    /**
-     * Get a NamedBean by its user name.
-     *
-     * @param userName the user name
-     * @return the result of {@link #getByUserName(java.lang.String)} call,
-     *         with userName
-     * @deprecated since 4.15.6; use
-     * {@link #getByUserName(java.lang.String)} instead
-     */
-    @Deprecated
-    protected E getInstanceByUserName(String userName) {
-        return getByUserName(userName);
-    }
-
     /** {@inheritDoc} */
     @Override
     public E getBySystemName(@Nonnull String systemName) {
@@ -248,7 +220,6 @@ public abstract class AbstractManager<E extends NamedBean> extends VetoableChang
 
         // notifications
         int position = getPosition(s);
-        fireDataListenersAdded(position, position, s);
         if (!silencedProperties.getOrDefault("beans", false)) {
             fireIndexedPropertyChange("beans", position, null, s);
         }
@@ -323,7 +294,6 @@ public abstract class AbstractManager<E extends NamedBean> extends VetoableChang
         }
         
         // notifications
-        fireDataListenersRemoved(position, position, s);
         if (!silencedProperties.getOrDefault("beans", false)) {
             fireIndexedPropertyChange("beans", position, s, null);
         }
@@ -538,54 +508,6 @@ public abstract class AbstractManager<E extends NamedBean> extends VetoableChang
         if (propertyName.equals("beans") && !silenced) {
             fireIndexedPropertyChange("beans", _beans.size(), null, null);
         }
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    @Deprecated
-    public void addDataListener(ManagerDataListener<E> e) {
-        if (e != null) listeners.add(e);
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    @Deprecated
-    public void removeDataListener(ManagerDataListener<E> e) {
-        if (e != null) listeners.remove(e);
-    }
-
-    @SuppressWarnings("deprecation")
-    private final List<ManagerDataListener<E>> listeners = new ArrayList<>();
-
-    private boolean muted = false;
-    
-    /** {@inheritDoc} */
-    @Override
-    @Deprecated
-    @SuppressWarnings("deprecation")
-    public void setDataListenerMute(boolean m) {
-        if (muted && !m) {
-            // send a total update, as we haven't kept track of specifics
-            ManagerDataEvent<E> e = new ManagerDataEvent<>(this, ManagerDataEvent.CONTENTS_CHANGED, 0, getObjectCount()-1, null);
-            listeners.forEach(listener -> listener.contentsChanged(e));          
-        }
-        this.muted = m;
-    }
-
-    @Deprecated
-    @SuppressWarnings("deprecation")
-    protected void fireDataListenersAdded(int start, int end, E changedBean) {
-        if (muted) return;
-        ManagerDataEvent<E> e = new ManagerDataEvent<>(this, ManagerDataEvent.INTERVAL_ADDED, start, end, changedBean);
-        listeners.forEach(m -> m.intervalAdded(e));
-    }
-
-    @Deprecated
-    @SuppressWarnings("deprecation")
-    protected void fireDataListenersRemoved(int start, int end, E changedBean) {
-        if (muted) return;
-        ManagerDataEvent<E> e = new ManagerDataEvent<>(this, ManagerDataEvent.INTERVAL_REMOVED, start, end, changedBean);
-        listeners.forEach(m -> m.intervalRemoved(e));
     }
 
     public void updateAutoNumber(String systemName) {
