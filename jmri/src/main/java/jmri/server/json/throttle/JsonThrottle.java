@@ -6,6 +6,7 @@ import static jmri.server.json.JSON.F;
 import static jmri.server.json.JSON.FORWARD;
 import static jmri.server.json.JSON.IS_LONG_ADDRESS;
 import static jmri.server.json.JSON.NAME;
+import static jmri.server.json.JSON.SPEED;
 import static jmri.server.json.JSON.STATUS;
 import static jmri.server.json.roster.JsonRoster.ROSTER_ENTRY;
 
@@ -28,7 +29,6 @@ import jmri.LocoAddress;
 import jmri.Throttle;
 import jmri.ThrottleListener;
 import jmri.jmrit.roster.Roster;
-import jmri.server.json.JSON;
 import jmri.server.json.JsonException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,13 +53,6 @@ public class JsonThrottle implements ThrottleListener, PropertyChangeListener {
      * {@value #IDLE}
      */
     public static final String IDLE = "idle"; // NOI18N
-    /**
-     * {@value #SPEED}
-     * 
-     * @deprecated since 4.15.7; use {@link jmri.server.json.JSON#SPEED} instead
-     */
-    @Deprecated
-    public static final String SPEED = JSON.SPEED; // NOI18N
     /**
      * {@value #SPEED_STEPS}
      */
