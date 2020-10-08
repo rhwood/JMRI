@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.prefs.BackingStoreException;
 import jmri.util.prefs.JmriPreferencesProvider;
+import org.netbeans.spi.project.AuxiliaryProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -5,7 +5,7 @@ import java.io.File;
 import java.util.HashMap;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import jmri.profile.AuxiliaryConfiguration;
+import org.netbeans.spi.project.AuxiliaryConfiguration;
 import jmri.profile.Profile;
 
 /**

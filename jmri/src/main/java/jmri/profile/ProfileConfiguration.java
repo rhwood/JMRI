@@ -2,6 +2,7 @@
 package jmri.profile;
 
 import jmri.util.prefs.JmriConfigurationProvider;
+import org.netbeans.spi.project.AuxiliaryConfiguration;
 import org.w3c.dom.Element;
 
 /**

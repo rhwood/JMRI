@@ -3,7 +3,7 @@ package jmri.util.prefs;
 
 import java.io.File;
 import java.io.IOException;
-import jmri.profile.AuxiliaryConfiguration;
+import org.netbeans.spi.project.AuxiliaryConfiguration;
 import jmri.profile.Profile;
 import jmri.profile.ProfileUtils;
 import jmri.util.FileUtil;

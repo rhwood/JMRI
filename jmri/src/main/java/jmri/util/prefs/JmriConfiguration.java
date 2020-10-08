@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
-import jmri.profile.AuxiliaryConfiguration;
+import org.netbeans.spi.project.AuxiliaryConfiguration;
 import jmri.util.FileUtil;
 import org.openide.xml.XMLUtil;
 import org.slf4j.Logger;

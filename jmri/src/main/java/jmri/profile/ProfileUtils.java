@@ -11,6 +11,7 @@ import jmri.util.node.NodeIdentity;
 import jmri.util.prefs.JmriConfigurationProvider;
 import jmri.util.prefs.JmriPreferencesProvider;
 import jmri.util.prefs.JmriUserInterfaceConfigurationProvider;
+import org.netbeans.spi.project.AuxiliaryConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -10,7 +10,7 @@ import java.util.Date;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import jmri.profile.AuxiliaryConfiguration;
+import org.netbeans.spi.project.AuxiliaryConfiguration;
 import jmri.profile.Profile;
 import jmri.util.FileUtil;
 import jmri.util.JUnitUtil;
